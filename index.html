@@ -5,992 +5,967 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>F1EXTOR TWITCH DROPS</title>
+<title>F1EXTOR DROPS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:#05040a;
-    font-family:'Orbitron',sans-serif;
-    color:white;
-    overflow-x:hidden;
+
+font-family:'Orbitron',sans-serif;
+
+background:#08080f;
+
+color:white;
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+display:flex;
+flex-direction:column;
 }
 
-/* BACKGROUND */
+main{
+flex:1;
+}
 
 body::before{
-    content:'';
-    position:fixed;
-    inset:0;
 
-    background:
-    linear-gradient(
-    rgba(0,0,0,.82),
-    rgba(0,0,0,.92)),
+content:'';
 
-    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1974&auto=format&fit=crop');
+position:fixed;
 
-    background-size:cover;
-    background-position:center;
+inset:0;
 
-    z-index:-2;
+background:
+linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.94)),
+url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1974&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+
+z-index:-1;
 }
 
-body::after{
-    content:'';
-    position:fixed;
-    inset:0;
+/* TOPBAR */
 
-    background:
-    radial-gradient(circle at top,
-    rgba(255,0,180,.18),
-    transparent 35%),
+.topbar{
 
-    radial-gradient(circle at bottom,
-    rgba(120,0,255,.12),
-    transparent 40%);
+position:fixed;
 
-    z-index:-1;
+top:0;
+left:0;
+
+width:100%;
+
+height:78px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 24px;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(14px);
+
+z-index:9999;
 }
 
-/* AUTH */
+.logo{
 
-.authButtons{
+font-size:30px;
+font-weight:900;
 
-    position:fixed;
+background:
+linear-gradient(90deg,#ff36bf,#9340ff);
 
-    top:20px;
-    right:20px;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-    z-index:9999;
+.topNav{
+
+display:flex;
+align-items:center;
+
+gap:12px;
+}
+
+.navBtn{
+
+height:40px;
+
+min-width:118px;
+
+padding:0 18px;
+
+border:none;
+
+border-radius:12px;
+
+background:
+rgba(255,255,255,.05);
+
+color:white;
+
+cursor:pointer;
+
+font-size:13px;
+
+font-family:'Orbitron',sans-serif;
+
+transition:.2s;
+}
+
+.navBtn:hover{
+
+transform:translateY(-2px);
+}
+
+.activeBtn{
+
+background:
+linear-gradient(
+90deg,
+#ff36bf,
+#9340ff)!important;
 }
 
 .steamBtn{
 
-    height:56px;
+height:48px;
 
-    padding:0 18px;
+padding:0 22px;
 
-    border:none;
+border:none;
 
-    border-radius:16px;
+border-radius:12px;
 
-    display:flex;
-    align-items:center;
+background:
+linear-gradient(
+90deg,
+#223b5d,
+#304d77);
 
-    gap:12px;
+color:white;
 
-    font-family:'Orbitron',sans-serif;
+font-family:'Orbitron',sans-serif;
 
-    color:white;
+cursor:pointer;
 
-    cursor:pointer;
+font-size:13px;
 
-    background:
-    linear-gradient(
-    90deg,
-    #101827,
-    #21314f);
-
-    border:
-    1px solid rgba(120,180,255,.18);
-
-    transition:.3s;
+transition:.2s;
 }
 
 .steamBtn:hover{
 
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 0 24px rgba(90,140,255,.25);
-}
-
-.steamIcon{
-
-    width:24px;
-    height:24px;
-}
-
-.steamLoginText{
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:flex-start;
-}
-
-.steamLoginText span{
-
-    font-size:12px;
-    font-weight:900;
-}
-
-.steamLoginText small{
-
-    font-size:9px;
-
-    color:#8aa4d8;
-
-    margin-top:2px;
-}
-
-/* PROFILE */
-
-.profilePanel{
-
-    position:fixed;
-
-    top:90px;
-    right:20px;
-
-    width:340px;
-
-    background:
-    linear-gradient(
-    180deg,
-    rgba(16,16,24,.98),
-    rgba(8,8,14,.98));
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    z-index:9998;
-
-    backdrop-filter:blur(12px);
-
-    box-shadow:
-    0 0 40px rgba(0,0,0,.35);
-}
-
-.profileHeader{
-
-    padding:18px;
-
-    border-bottom:
-    1px solid rgba(255,255,255,.06);
-}
-
-.profileTitle{
-
-    font-size:18px;
-    font-weight:900;
-
-    margin-bottom:12px;
-}
-
-.profileSteam{
-
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    font-size:12px;
-
-    color:#9cb2d8;
-}
-
-.profileSteam img{
-
-    width:20px;
-    height:20px;
-}
-
-.profileContent{
-
-    padding:18px;
-}
-
-.profileLabel{
-
-    font-size:11px;
-    font-weight:800;
-
-    color:#ff87e3;
-
-    margin-bottom:10px;
-}
-
-.tradeInput{
-
-    width:100%;
-
-    height:46px;
-
-    border:none;
-
-    outline:none;
-
-    border-radius:12px;
-
-    background:
-    rgba(255,255,255,.05);
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    color:white;
-
-    padding:0 14px;
-
-    font-family:'Orbitron',sans-serif;
-
-    font-size:11px;
-}
-
-.tradeInput::placeholder{
-
-    color:#777;
-}
-
-.saveTradeBtn{
-
-    width:100%;
-
-    margin-top:14px;
-
-    height:46px;
-
-    border:none;
-
-    border-radius:12px;
-
-    font-family:'Orbitron',sans-serif;
-
-    font-size:11px;
-    font-weight:900;
-
-    color:white;
-
-    cursor:pointer;
-
-    background:
-    linear-gradient(
-    90deg,
-    #7d2cff,
-    #ff39c6);
-
-    transition:.3s;
-}
-
-.saveTradeBtn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 0 24px rgba(255,0,180,.3);
+transform:translateY(-2px);
 }
 
 /* HERO */
 
 .hero{
-    width:100%;
-    min-height:620px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+padding-top:150px;
 
-    position:relative;
+text-align:center;
 }
 
-.heroOverlay{
-    position:absolute;
-    inset:0;
+.heroTitle{
 
-    background:
-    linear-gradient(
-    rgba(0,0,0,.35),
-    rgba(0,0,0,.82));
+font-size:82px;
+font-weight:900;
+
+line-height:.95;
+
+max-width:1000px;
+
+margin:auto;
+
+background:
+linear-gradient(
+180deg,
+#ffe4f8,
+#ff41c5);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.heroContent{
-    position:relative;
-    z-index:2;
+.heroText{
 
-    width:100%;
-    max-width:1050px;
+margin-top:24px;
 
-    padding:60px 40px;
+font-size:20px;
 
-    text-align:center;
+color:#d7d7df;
 }
 
-.mainTitle{
-    font-size:clamp(48px,8vw,120px);
+.eventLine{
 
-    font-weight:900;
+margin-top:34px;
 
-    letter-spacing:5px;
+display:flex;
+justify-content:center;
 
-    line-height:1.05;
+gap:50px;
 
-    text-transform:uppercase;
-
-    background:
-    linear-gradient(
-    180deg,
-    #ffb0e9,
-    #ff4ec7);
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+font-size:30px;
+font-weight:900;
 }
 
-.desc{
-    margin-top:24px;
+.eventLine span{
 
-    font-size:16px;
-
-    line-height:1.8;
-
-    color:#d6d6e3;
+color:#ff87e5;
 }
 
-.round{
-    margin-top:28px;
+.countdownBox{
 
-    font-size:32px;
+margin-top:34px;
 
-    font-weight:900;
-
-    color:#ff84de;
+font-size:24px;
+font-weight:900;
 }
 
-.dateBox{
-    margin-top:24px;
+#eventTimer{
 
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:18px 40px;
-
-    border-radius:18px;
-
-    background:
-    rgba(14,14,22,.92);
-
-    border:
-    1px solid rgba(255,0,180,.25);
-
-    font-size:28px;
-    font-weight:900;
-
-    color:#ff8de5;
-}
-
-/* SECTION */
-
-.section{
-    width:100%;
-    max-width:1500px;
-
-    margin:auto;
-
-    padding:60px 25px;
+color:#ff87e5;
 }
 
 /* STREAM */
 
-.streamWrapper{
+.streamSection{
 
-    border:
-    1px solid rgba(255,255,255,.08);
+max-width:1750px;
 
-    background:
-    rgba(5,5,10,.96);
+margin:30px auto 0;
 
-    padding:20px;
+padding:0 28px;
 }
 
-.streamTopBar{
+.streamGrid{
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+display:grid;
 
-    padding-bottom:18px;
+grid-template-columns:
+minmax(0,1.75fr)
+420px;
 
-    border-bottom:
-    1px solid rgba(255,255,255,.08);
+gap:24px;
+
+align-items:start;
+}
+
+/* STREAMER */
+
+.streamerBar{
+
+height:72px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 20px;
+
+border-radius:22px 22px 0 0;
+
+background:
+rgba(12,12,18,.96);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+border-bottom:none;
+}
+
+.streamerLeft{
+
+display:flex;
+align-items:center;
+
+gap:14px;
+}
+
+.streamerAvatar{
+
+width:46px;
+height:46px;
+
+overflow:hidden;
+
+border-radius:50%;
+}
+
+.streamerAvatar img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+}
+
+.streamerName{
+
+font-size:16px;
+font-weight:900;
+}
+
+.streamerGame{
+
+margin-top:4px;
+
+font-size:11px;
+
+color:#cfcfe0;
 }
 
 .streamStatus{
 
-    display:flex;
-    align-items:center;
+height:36px;
 
-    gap:14px;
+padding:0 16px;
 
-    font-size:18px;
-    font-weight:700;
+border-radius:999px;
 
-    color:#bdbdcf;
+display:flex;
+align-items:center;
+
+gap:10px;
+
+font-size:12px;
+font-weight:900;
 }
 
-.streamStatus span{
+.streamStatus.online{
 
-    color:#ffffff;
+background:
+rgba(0,210,106,.16);
+
+color:#00d26a;
 }
 
-.parentBox{
+.statusDot{
 
-    border:
-    1px solid rgba(255,255,255,.1);
+width:10px;
+height:10px;
 
-    padding:8px 16px;
+border-radius:50%;
 
-    font-size:12px;
-
-    color:#cfcfe2;
-}
-
-.streamContent{
-
-    margin-top:20px;
-
-    display:grid;
-
-    grid-template-columns:
-    1.8fr .8fr;
-
-    gap:18px;
+background:currentColor;
 }
 
 /* PLAYER */
 
-.fakePlayer{
+.playerBox{
 
-    position:relative;
+overflow:hidden;
 
-    min-height:500px;
+border-radius:
+0 0 28px 28px;
 
-    overflow:hidden;
+border:
+1px solid rgba(255,255,255,.08);
 
-    border:
-    1px solid rgba(255,255,255,.08);
+border-top:none;
 
-    background:
-    url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1974&auto=format&fit=crop');
-
-    background-size:cover;
-    background-position:center;
-}
-
-.fakePlayer::before{
-
-    content:'';
-
-    position:absolute;
-    inset:0;
-
-    backdrop-filter:blur(4px);
-
-    background:
-    rgba(0,0,0,.5);
-}
-
-.playerOverlay{
-
-    position:absolute;
-    inset:0;
-
-    padding:20px;
-
-    z-index:2;
-}
-
-.streamNick{
-
-    font-size:28px;
-    font-weight:900;
-}
-
-.streamTitle{
-
-    margin-top:8px;
-
-    font-size:18px;
-
-    line-height:1.5;
-}
-
-.streamViewers{
-
-    margin-top:8px;
-
-    font-size:15px;
-
-    color:#ff70da;
-}
-
-.liveBadge{
-
-    position:absolute;
-
-    top:20px;
-    right:20px;
-
-    background:#ff2b2b;
-
-    padding:8px 14px;
-
-    border-radius:10px;
-
-    font-size:12px;
-    font-weight:900;
-
-    z-index:3;
-}
-
-.playButton{
-
-    position:absolute;
-
-    top:50%;
-    left:50%;
-
-    width:100px;
-    height:100px;
-
-    transform:
-    translate(-50%,-50%);
-
-    z-index:2;
-
-    cursor:pointer;
-}
-
-.playButton::before{
-
-    content:'';
-
-    position:absolute;
-
-    left:30px;
-    top:16px;
-
-    border-top:34px solid transparent;
-    border-bottom:34px solid transparent;
-    border-left:56px solid white;
-}
-
-/* DROPS PANEL */
-
-.dropsProgress{
-
-    margin-top:18px;
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    background:
-    #07070b;
-
-    display:grid;
-
-    grid-template-columns:
-    110px 1fr 120px;
-
-    gap:18px;
-
-    align-items:center;
-
-    padding:16px 18px;
-}
-
-.currentDrop{
-
-    width:92px;
-    height:92px;
-
-    border:
-    2px solid #ff3fc8;
-
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-    180deg,
-    rgba(25,25,35,.95),
-    rgba(10,10,18,.95));
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.currentDrop img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-
-    padding:6px;
-}
-
-.dropTitle{
-
-    font-size:26px;
-    font-weight:900;
-
-    margin-bottom:10px;
-}
-
-.bigProgress{
-
-    width:100%;
-    height:16px;
-
-    overflow:hidden;
-
-    background:
-    repeating-linear-gradient(
-    -45deg,
-    #111,
-    #111 10px,
-    #1b1b1b 10px,
-    #1b1b1b 20px);
-
-    border:
-    1px solid rgba(255,255,255,.08);
-}
-
-.bigProgressFill{
-
-    width:0%;
-    height:100%;
-
-    transition:.4s;
-
-    background:
-    linear-gradient(
-    90deg,
-    #ff39c6,
-    #7d2cff);
-}
-
-.dropDesc{
-
-    margin-top:10px;
-
-    color:#bcbcd3;
-
-    font-size:11px;
-}
-
-.dropPercent{
-
-    text-align:right;
-
-    font-size:18px;
-    font-weight:900;
+height:820px;
 }
 
 /* CHAT */
 
-.chatSide{
+.chatBox{
 
-    border:
-    1px solid rgba(255,255,255,.08);
+overflow:hidden;
 
-    background:
-    #341060;
+border-radius:28px;
+
+border:
+1px solid rgba(255,255,255,.08);
+
+background:black;
+
+height:914px;
 }
 
 .chatHeader{
 
-    padding:18px;
+height:60px;
 
-    font-size:24px;
-    font-weight:900;
+display:flex;
+align-items:center;
 
-    background:
-    linear-gradient(
-    90deg,
-    #6b1fff,
-    #8b2cff);
+padding:0 20px;
+
+font-weight:900;
+
+background:
+linear-gradient(
+90deg,
+#6d24ff,
+#9137ff);
 }
 
-.chatMessages{
+/* PROGRESS */
 
-    padding:18px;
+.progressPanel{
 
-    display:flex;
-    flex-direction:column;
+margin-top:18px;
 
-    gap:16px;
+padding:18px;
+
+border-radius:22px;
+
+display:grid;
+
+grid-template-columns:
+90px 1fr 140px;
+
+gap:18px;
+
+align-items:center;
+
+background:
+rgba(10,10,16,.96);
+
+border:
+1px solid rgba(255,255,255,.08);
 }
 
-.msg{
+.currentDrop{
 
-    font-size:14px;
+width:86px;
+height:86px;
+
+overflow:hidden;
+
+border-radius:18px;
+
+border:
+2px solid #ff36bf;
 }
 
-.msg span{
+.currentDrop img{
 
-    color:#ff8de7;
-    font-weight:800;
+width:100%;
+height:100%;
+
+object-fit:cover;
 }
 
-/* SKINS */
+.progressTitle{
 
-.sectionTitle{
-
-    text-align:center;
-
-    font-size:46px;
-
-    font-weight:900;
-
-    margin-bottom:40px;
+font-size:22px;
+font-weight:900;
 }
 
-.sectionTitle span{
+.mainProgress{
 
-    color:#ff79d8;
+width:100%;
+height:14px;
+
+margin-top:14px;
+
+overflow:hidden;
+
+border-radius:999px;
+
+background:
+rgba(255,255,255,.08);
 }
 
-.skinsGrid{
+.mainProgressFill{
 
-    display:grid;
+width:0%;
+height:100%;
 
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
-
-    gap:24px;
-}
-
-.skinCard{
-
-    border-radius:24px;
-
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-    180deg,
-    rgba(20,20,30,.96),
-    rgba(8,8,15,.96));
-
-    border:
-    1px solid rgba(255,0,180,.18);
-
-    height:560px;
-
-    display:flex;
-    flex-direction:column;
-}
-
-.skinTop{
-
-    height:80px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 18px;
-}
-
-.creator{
-
-    display:flex;
-    align-items:center;
-
-    gap:12px;
-}
-
-.creator img{
-
-    width:52px;
-    height:52px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-}
-
-.creatorName{
-
-    font-size:20px;
-    font-weight:900;
-}
-
-.liveDot{
-
-    width:14px;
-    height:14px;
-
-    border-radius:50%;
-
-    background:#ff2b2b;
-}
-
-/* IMAGE / GIF */
-
-.uploadArea{
-
-    position:relative;
-
-    width:100%;
-
-    aspect-ratio:1/1;
-
-    overflow:hidden;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.skinPreview{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    padding:10px;
-}
-
-.skinTitle{
-
-    padding:20px 18px 8px;
-
-    text-align:center;
-
-    font-size:24px;
-    font-weight:900;
-}
-
-.skinHours{
-
-    text-align:center;
-
-    color:#ff7fe1;
-
-    font-size:14px;
-
-    margin-bottom:18px;
-}
-
-.progressWrap{
-
-    margin-top:auto;
-
-    padding:20px;
-}
-
-.progressBar{
-
-    width:100%;
-    height:16px;
-
-    border-radius:999px;
-
-    overflow:hidden;
-
-    background:
-    rgba(255,255,255,.06);
-}
-
-.progressFill{
-
-    height:100%;
-
-    width:0%;
-
-    transition:.35s;
-
-    background:
-    linear-gradient(
-    90deg,
-    #ff2fb3,
-    #b400ff);
+background:
+linear-gradient(90deg,#ff36bf,#9340ff);
 }
 
 .progressText{
 
-    margin-top:12px;
+margin-top:12px;
 
-    text-align:center;
+font-size:14px;
 
-    font-size:14px;
-    font-weight:800;
+color:#cfcfe2;
+}
 
-    color:#ff8ce5;
+.minutesBlock{
+
+text-align:right;
+
+font-size:15px;
+font-weight:900;
+}
+
+/* SECTIONS */
+
+.skinsSection{
+
+max-width:1550px;
+
+margin:auto;
+
+padding:130px 24px 90px;
+}
+
+.featuredSection{
+
+padding-top:35px!important;
+}
+
+.skinsTitle{
+
+text-align:center;
+
+font-size:60px;
+font-weight:900;
+
+margin-bottom:40px;
+}
+
+.skinsTitle span{
+
+color:#ff88e5;
+}
+
+/* SKINS */
+
+.skinsGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(360px,1fr));
+
+gap:26px;
+}
+
+.skinCard{
+
+overflow:hidden;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+180deg,
+rgba(20,20,28,.97),
+rgba(10,10,16,.99));
+
+border:
+1px solid rgba(255,0,180,.16);
+
+transition:.25s;
+
+min-height:690px;
+}
+
+.skinCard:hover{
+
+transform:translateY(-5px);
+}
+
+.skinTop{
+
+height:64px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 16px;
+}
+
+.creator{
+
+display:flex;
+align-items:center;
+
+gap:12px;
+}
+
+.creator img{
+
+width:38px;
+height:38px;
+
+border-radius:50%;
+}
+
+.creatorName{
+
+font-size:14px;
+font-weight:900;
+}
+
+.liveDot{
+
+width:10px;
+height:10px;
+
+border-radius:50%;
+
+background:#00d26a;
+}
+
+.skinImage{
+
+width:100%;
+
+height:420px;
+
+object-fit:contain;
+
+padding:18px;
+}
+
+.skinInfo{
+
+padding:18px;
+}
+
+.skinRarity{
+
+width:max-content;
+
+margin:0 auto 16px;
+
+padding:10px 20px;
+
+border-radius:999px;
+
+font-size:12px;
+font-weight:900;
+}
+
+.common{
+background:linear-gradient(90deg,#666,#888);
+}
+
+.rare{
+background:linear-gradient(90deg,#2b6fff,#49a2ff);
+}
+
+.epic{
+background:linear-gradient(90deg,#b12bff,#ff36bf);
+}
+
+.legendary{
+
+background:
+linear-gradient(
+90deg,
+#ff8a00,
+#ffd000);
+
+color:black;
+
+font-size:16px;
+
+padding:14px 28px;
+
+box-shadow:
+0 0 25px rgba(255,190,0,.35);
+}
+
+.skinName{
+
+text-align:center;
+
+font-size:34px;
+font-weight:900;
+
+line-height:1.1;
+
+min-height:78px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.skinHours{
+
+margin-top:14px;
+
+text-align:center;
+
+font-size:15px;
+
+color:#ff87e5;
+}
+
+.skinProgress{
+
+width:100%;
+height:12px;
+
+margin-top:18px;
+
+overflow:hidden;
+
+border-radius:999px;
+
+background:
+rgba(255,255,255,.08);
+}
+
+.skinProgressFill{
+
+width:0%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#ff36bf,
+#9340ff);
 }
 
 .claimBtn{
 
-    margin-top:14px;
+width:100%;
+height:52px;
 
-    width:100%;
+margin-top:18px;
 
-    border:none;
+border:none;
 
-    padding:14px 18px;
+border-radius:14px;
 
-    color:white;
+background:
+linear-gradient(
+90deg,
+#34343f,
+#44444f);
 
-    font-weight:900;
+color:white;
 
-    font-size:12px;
+font-size:13px;
 
-    border-radius:12px;
+font-family:'Orbitron',sans-serif;
 
-    font-family:'Orbitron',sans-serif;
+cursor:pointer;
 }
 
-.disabledBtn{
+/* LOCKED */
 
-    background:
-    linear-gradient(
-    90deg,
-    #2b2b35,
-    #3b3b45);
+.lockText{
 
-    opacity:.5;
+margin-top:14px;
+
+text-align:center;
+
+font-size:13px;
+
+color:#ffb0e7;
+
+line-height:1.6;
 }
 
-.activeClaim{
+/* LEADERBOARD */
 
-    background:
-    linear-gradient(
-    90deg,
-    #7d2cff,
-    #ff39c6);
+.leaderboardBox{
+
+max-width:1100px;
+
+margin:auto;
+
+overflow:hidden;
+
+border-radius:24px;
+
+background:
+rgba(10,10,16,.96);
+
+border:
+1px solid rgba(255,255,255,.08);
 }
 
-.claimedBtn{
+.leaderRow{
 
-    background:
-    linear-gradient(
-    90deg,
-    #00a86b,
-    #00d084);
+display:flex;
+justify-content:space-between;
+
+padding:28px;
+
+font-size:22px;
+
+border-bottom:
+1px solid rgba(255,255,255,.06);
+}
+
+/* PROFILE */
+
+.statsGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+
+gap:22px;
+}
+
+.statCard{
+
+padding:40px;
+
+border-radius:24px;
+
+background:
+rgba(10,10,16,.96);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+text-align:center;
+}
+
+.statValue{
+
+font-size:54px;
+font-weight:900;
+
+color:#ff87e5;
+}
+
+.statLabel{
+
+margin-top:12px;
+
+color:#d3d3df;
+}
+
+/* FAQ */
+
+.faqItem{
+
+max-width:1100px;
+
+margin:0 auto 24px;
+
+padding:34px;
+
+border-radius:24px;
+
+background:
+rgba(10,10,16,.96);
+
+border:
+1px solid rgba(255,255,255,.08);
+}
+
+.faqQuestion{
+
+font-size:26px;
+font-weight:900;
+
+color:#ff87e5;
+}
+
+.faqAnswer{
+
+margin-top:18px;
+
+line-height:1.8;
+
+font-size:16px;
+
+color:#d5d5df;
+}
+
+/* FOOTER */
+
+.footer{
+
+margin-top:auto;
+
+padding:60px 24px;
+
+text-align:center;
+
+border-top:
+1px solid rgba(255,255,255,.06);
+
+background:
+rgba(8,8,14,.96);
+
+width:100%;
+}
+
+.footerLogo{
+
+font-size:48px;
+font-weight:900;
+
+background:
+linear-gradient(
+90deg,
+#ff36bf,
+#9340ff);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.footerText{
+
+margin-top:20px;
+
+font-size:15px;
+font-weight:900;
+
+color:#d4d4df;
+}
+
+.footerSub{
+
+margin-top:14px;
+
+font-size:12px;
+
+letter-spacing:2px;
+
+color:#8f8fa3;
+}
+
+@media(max-width:1200px){
+
+.streamGrid{
+grid-template-columns:1fr;
+}
+
+.topbar{
+flex-direction:column;
+height:auto;
+padding:16px;
+gap:16px;
+}
+
+.heroTitle{
+font-size:58px;
+}
+
+.eventLine{
+flex-direction:column;
+gap:20px;
+}
+
 }
 
 </style>
@@ -999,759 +974,753 @@ body::after{
 
 <body>
 
-<!-- AUTH -->
+<main>
 
-<div class="authButtons">
+<header class="topbar">
 
-    <button class="steamBtn" id="steamLoginBtn">
+<div class="logo">
+F1EXTOR DROPS
+</div>
 
-        <img
-        class="steamIcon"
-        src="https://cdn-icons-png.flaticon.com/512/5968/5968719.png">
+<div class="topNav">
 
-        <div class="steamLoginText">
+<button class="navBtn activeBtn" onclick="showTab('home',this)">
+HOME
+</button>
 
-            <span>
-                ВОЙТИ ЧЕРЕЗ STEAM
-            </span>
+<button class="navBtn" onclick="showTab('drops',this)">
+DROPS
+</button>
 
-            <small id="steamStatusText">
-                STEAM CONNECTING
-            </small>
+<button class="navBtn" onclick="showTab('leaderboard',this)">
+LEADERBOARD
+</button>
 
-        </div>
+<button class="navBtn" onclick="showTab('profile',this)">
+PROFILE
+</button>
 
-    </button>
+<button class="navBtn" onclick="showTab('faq',this)">
+FAQ
+</button>
+
+</div>
+
+<button
+class="steamBtn"
+id="steamLogin">
+
+ВОЙТИ ЧЕРЕЗ STEAM
+
+</button>
+
+</header>
+
+<!-- HOME -->
+
+<div id="homeTab">
+
+<section class="hero">
+
+<div class="heroTitle">
+F1EXTOR TWITCH DROPS
+</div>
+
+<div class="heroText">
+Watch streams and unlock exclusive Safari Collection rewards.
+</div>
+
+<div class="eventLine">
+
+<div>
+<span>EVENT:</span>
+21 МАЯ — 30 МАЯ
+</div>
+
+<div>
+<span>TIME:</span>
+20:00 — 22:00 МСК
+</div>
+
+</div>
+
+<div class="countdownBox">
+
+EVENT STATUS:
+<span id="eventTimer">
+LOADING...
+</span>
+
+</div>
+
+</section>
+
+<section class="streamSection">
+
+<div class="streamGrid">
+
+<div>
+
+<div class="streamerBar">
+
+<div class="streamerLeft">
+
+<div class="streamerAvatar">
+
+<img src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
+
+</div>
+
+<div>
+
+<div class="streamerName">
+MEKSIKANEC74
+</div>
+
+<div class="streamerGame">
+RUST DROPS EVENT
+</div>
+
+</div>
+
+</div>
+
+<div class="streamStatus online">
+
+<div class="statusDot"></div>
+
+ONLINE
+
+</div>
+
+</div>
+
+<div class="playerBox">
+
+<iframe
+src="https://player.twitch.tv/?channel=meksikanec74&parent=localhost"
+width="100%"
+height="820"
+frameborder="0"
+allowfullscreen="true">
+</iframe>
+
+</div>
+
+<div class="progressPanel">
+
+<div class="currentDrop">
+
+<img src="https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif">
+
+</div>
+
+<div>
+
+<div class="progressTitle">
+DROPS PROGRESS
+</div>
+
+<div class="mainProgress">
+
+<div
+class="mainProgressFill"
+id="mainFill">
+</div>
+
+</div>
+
+<div
+class="progressText"
+id="progressText">
+
+ВОЙДИТЕ ЧЕРЕЗ STEAM ЧТОБЫ ПОЛУЧАТЬ DROPS
+
+</div>
+
+</div>
+
+<div class="minutesBlock">
+
+<div id="percentText">
+0%
+</div>
+
+<div id="minutesText">
+0 / 480 MIN
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="chatBox">
+
+<div class="chatHeader">
+TWITCH CHAT
+</div>
+
+<iframe
+src="https://www.twitch.tv/embed/meksikanec74/chat?darkpopout&parent=localhost"
+width="100%"
+height="854"
+frameborder="0"
+scrolling="no">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="skinsSection featuredSection">
+
+<div class="skinsTitle">
+
+FEATURED <span>DROPS</span>
+
+</div>
+
+<div class="skinsGrid" id="featuredDropsGrid"></div>
+
+</section>
+
+</div>
+
+<!-- DROPS -->
+
+<div id="dropsTab" style="display:none;">
+
+<section class="skinsSection">
+
+<div class="skinsTitle">
+
+SAFARI <span>COLLECTION</span>
+
+</div>
+
+<div class="skinsGrid" id="dropsGrid"></div>
+
+</section>
+
+<section class="streamSection">
+
+<div class="streamGrid">
+
+<div>
+
+<div class="streamerBar">
+
+<div class="streamerLeft">
+
+<div class="streamerAvatar">
+
+<img src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
+
+</div>
+
+<div>
+
+<div class="streamerName">
+MEKSIKANEC74
+</div>
+
+<div class="streamerGame">
+RUST DROPS EVENT
+</div>
+
+</div>
+
+</div>
+
+<div class="streamStatus online">
+
+<div class="statusDot"></div>
+
+ONLINE
+
+</div>
+
+</div>
+
+<div class="playerBox">
+
+<iframe
+src="https://player.twitch.tv/?channel=meksikanec74&parent=localhost"
+width="100%"
+height="820"
+frameborder="0"
+allowfullscreen="true">
+</iframe>
+
+</div>
+
+</div>
+
+<div class="chatBox">
+
+<div class="chatHeader">
+TWITCH CHAT
+</div>
+
+<iframe
+src="https://www.twitch.tv/embed/meksikanec74/chat?darkpopout&parent=localhost"
+width="100%"
+height="854"
+frameborder="0"
+scrolling="no">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- LEADERBOARD -->
+
+<div id="leaderboardTab" style="display:none;">
+
+<section class="skinsSection">
+
+<div class="skinsTitle">
+
+TOP <span>FARMERS</span>
+
+</div>
+
+<div class="leaderboardBox">
+
+<div class="leaderRow">
+<span>#1 F1EXTOR</span>
+<span>182 HOURS</span>
+</div>
+
+<div class="leaderRow">
+<span>#2 SAFARIKING</span>
+<span>141 HOURS</span>
+</div>
+
+<div class="leaderRow">
+<span>#3 USER123</span>
+<span>99 HOURS</span>
+</div>
+
+<div class="leaderRow">
+<span>#4 DROPHUNTER</span>
+<span>77 HOURS</span>
+</div>
+
+</div>
+
+</section>
 
 </div>
 
 <!-- PROFILE -->
 
-<div class="profilePanel">
+<div id="profileTab" style="display:none;">
 
-    <div class="profileHeader">
+<section class="skinsSection">
 
-        <div class="profileTitle">
-            ЛИЧНЫЙ КАБИНЕТ
-        </div>
+<div class="skinsTitle">
 
-        <div class="profileSteam">
-
-            <img
-            src="https://cdn-icons-png.flaticon.com/512/5968/5968719.png">
-
-            <span id="profileSteamStatus">
-                STEAM NOT CONNECTED
-            </span>
-
-        </div>
-
-    </div>
-
-    <div class="profileContent">
-
-        <div class="profileLabel">
-            STEAM TRADE LINK
-        </div>
-
-        <input
-        type="text"
-        id="tradeLinkInput"
-        class="tradeInput"
-        placeholder="https://steamcommunity.com/tradeoffer/new/?partner=">
-
-        <button
-        class="saveTradeBtn"
-        id="saveTradeBtn">
-
-            СОХРАНИТЬ TRADE LINK
-
-        </button>
-
-    </div>
+MY <span>PROFILE</span>
 
 </div>
 
-<!-- HERO -->
+<div class="statsGrid">
 
-<section class="hero">
+<div class="statCard">
 
-    <div class="heroOverlay"></div>
+<div class="statValue">
+17
+</div>
 
-    <div class="heroContent">
+<div class="statLabel">
+FARM LEVEL
+</div>
 
-        <div class="mainTitle">
-            F1EXTOR TWITCH DROPS
-        </div>
+</div>
 
-        <div class="desc">
-            Смотри трансляцию F1EXTOR на Twitch и получай Safari Collection Drops.
-        </div>
+<div class="statCard">
 
-        <div class="round">
-            ROUND 1 × SAFARI COLLECTION DROPS + EXCLUSIVE
-        </div>
+<div class="statValue">
+42H
+</div>
 
-        <div class="dateBox">
-            MAY 23 - MAY 31
-        </div>
+<div class="statLabel">
+WATCHED
+</div>
 
-    </div>
+</div>
 
-</section>
+<div class="statCard">
 
-<!-- STREAM -->
+<div class="statValue">
+12
+</div>
 
-<section class="section">
+<div class="statLabel">
+CLAIMED DROPS
+</div>
 
-    <div class="streamWrapper">
+</div>
 
-        <div class="streamTopBar">
-
-            <div class="streamStatus">
-                Прямая трансляция
-                <span>F1EXTOR</span>
-            </div>
-
-            <div class="parentBox">
-                twitch.tv/f1extor
-            </div>
-
-        </div>
-
-        <div class="streamContent">
-
-            <div class="videoSide">
-
-                <div class="fakePlayer">
-
-                    <div class="liveBadge">
-                        OFFLINE
-                    </div>
-
-                    <div class="playButton"></div>
-
-                    <div class="playerOverlay">
-
-                        <div class="streamNick">
-                            F1EXTOR 💜
-                        </div>
-
-                        <div class="streamTitle">
-                            SAFARI DROPS + EXCLUSIVE | GTA V / RUST
-                        </div>
-
-                        <div class="streamViewers">
-                            STREAM OFFLINE
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="dropsProgress">
-
-                    <div class="currentDrop">
-
-                        <img
-                        id="currentDropImage"
-                        src="https://i.imgur.com/Fx8XG6v.png">
-
-                    </div>
-
-                    <div class="dropInfo">
-
-                        <div class="dropTitle">
-                            ПРОГРЕСС TWITCH DROPS
-                        </div>
-
-                        <div class="bigProgress">
-
-                            <div
-                            class="bigProgressFill"
-                            id="mainProgressFill">
-                            </div>
-
-                        </div>
-
-                        <div
-                        class="dropDesc"
-                        id="dropDescription">
-
-                            Авторизируйся через Steam чтобы начать просмотр.
-
-                        </div>
-
-                    </div>
-
-                    <div class="dropPercent">
-
-                        <div id="watchPercent">
-                            0%
-                        </div>
-
-                        <div id="watchMinutes">
-                            0 / 480 МИН
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- CHAT -->
-
-            <div class="chatSide">
-
-                <div class="chatHeader">
-                    Чат трансляции
-                </div>
-
-                <div class="chatMessages">
-
-                    <div class="msg">
-                        <span>SafariFan:</span>
-                        ждём стрим 👀
-                    </div>
-
-                    <div class="msg">
-                        <span>KappaRust:</span>
-                        drops скоро?
-                    </div>
-
-                    <div class="msg">
-                        <span>NightBot:</span>
-                        Стрим сейчас оффлайн
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-<!-- SKINS -->
+</div>
 
-<section class="section">
+<!-- FAQ -->
 
-    <div class="sectionTitle">
-        F1EXTOR TWITCH DROPS
-        <span>Safari Collection</span>
-    </div>
+<div id="faqTab" style="display:none;">
 
-    <div class="skinsGrid" id="skinsGrid"></div>
+<section class="skinsSection">
+
+<div class="skinsTitle">
+
+FAQ & <span>GUIDE</span>
+
+</div>
+
+<div class="faqItem">
+
+<div class="faqQuestion">
+HOW DO I START FARMING DROPS?
+</div>
+
+<div class="faqAnswer">
+
+1. Login via Steam.<br><br>
+2. Open the stream.<br><br>
+3. Keep the stream active.<br><br>
+4. Progress starts only after Steam authorization.
+
+</div>
+
+</div>
+
+<div class="faqItem">
+
+<div class="faqQuestion">
+HOW LONG DOES EACH DROP TAKE?
+</div>
+
+<div class="faqAnswer">
+
+Each Safari Collection reward requires 8 hours of watch time.
+
+</div>
+
+</div>
 
 </section>
+
+</div>
+
+</main>
+
+<footer class="footer">
+
+<div class="footerLogo">
+F1EXTOR.COM
+</div>
+
+<div class="footerText">
+© 2026 F1EXTOR.COM • ALL RIGHTS RESERVED
+</div>
+
+<div class="footerSub">
+
+TWITCH DROPS PLATFORM • RUST EVENT SYSTEM • POWERED BY F1EXTOR
+
+</div>
+
+</footer>
 
 <script>
 
-const twitchAvatar =
-"https://static-cdn.jtvnw.net/jtv_user_pictures/f1extor-profile_image-300x300.png";
-
-/* STREAM STATUS */
-
-let streamOnline = false;
-
-/* SKINS */
+let steamConnected = false
+let progress = 0
 
 const skins = [
 
 {
-    name:"SAFARI SAR",
-    image:"https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif",
-    creator:"F1EXTOR",
-    requiredMinutes:120,
-    claimed:false
+name:'SAFARI SAR',
+image:'https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif',
+rarity:'COMMON',
+class:'common'
 },
 
 {
-    name:"SAFARI THOMPSON",
-    image:"https://i.imgur.com/8Km9tLL.png",
-    creator:"F1EXTOR",
-    requiredMinutes:240,
-    claimed:false
+name:'SAFARI THOMPSON',
+image:'https://i.imgur.com/8Km9tLL.png',
+rarity:'RARE',
+class:'rare'
 },
 
 {
-    name:"SAFARI MP5",
-    image:"https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif",
-    creator:"F1EXTOR",
-    requiredMinutes:360,
-    claimed:false
+name:'SAFARI MP5',
+image:'https://i.imgur.com/Fx8XG6v.png',
+rarity:'EPIC',
+class:'epic'
 },
 
 {
-    name:"SAFARI AK47",
-    image:"https://i.imgur.com/Fx8XG6v.png",
-    creator:"F1EXTOR",
-    requiredMinutes:480,
-    claimed:false
+name:'SAFARI AK47',
+image:'https://i.imgur.com/Fx8XG6v.png',
+rarity:'LEGENDARY',
+class:'legendary'
 }
 
-];
+]
 
-/* RENDER */
+function createCard(skin){
 
-const skinsGrid =
-document.getElementById(
-'skinsGrid');
+return `
 
-function createSkinMedia(mediaUrl){
+<div class="skinCard">
 
-    return `
-    <img
-    class="skinPreview"
-    src="${mediaUrl}"
-    draggable="false">
-    `;
-}
+<div class="skinTop">
 
-function renderSkins(){
+<div class="creator">
 
-    skinsGrid.innerHTML='';
+<img src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
 
-    skins.forEach((skin,index)=>{
+<div class="creatorName">
+MEKSIKANEC74
+</div>
 
-        const card =
-        document.createElement('div');
+</div>
 
-        card.className =
-        'skinCard';
+<div class="liveDot"></div>
 
-        card.innerHTML = `
+</div>
 
-        <div class="skinTop">
+<img
+class="skinImage"
+src="${skin.image}">
 
-            <div class="creator">
+<div class="skinInfo">
 
-                <img src="${twitchAvatar}">
+<div class="skinRarity ${skin.class}">
+${skin.rarity}
+</div>
 
-                <div class="creatorName">
-                    ${skin.creator}
-                </div>
+<div class="skinName">
+${skin.name}
+</div>
 
-            </div>
+<div class="skinHours">
+8 HOURS REQUIRED
+</div>
 
-            <div class="liveDot"></div>
+<div class="skinProgress">
 
-        </div>
+<div class="skinProgressFill"></div>
 
-        <div class="uploadArea">
+</div>
 
-            ${createSkinMedia(
-            skin.image)}
+<div
+class="lockText">
 
-        </div>
+ВОЙДИТЕ ЧЕРЕЗ STEAM ЧТОБЫ ПОЛУЧАТЬ DROPS
 
-        <div class="skinTitle">
-            ${skin.name}
-        </div>
+</div>
 
-        <div class="skinHours">
-            ${skin.requiredMinutes} MINUTES
-        </div>
+<button class="claimBtn">
+CLAIM DROP
+</button>
 
-        <div class="progressWrap">
+</div>
 
-            <div class="progressBar">
+</div>
 
-                <div
-                class="progressFill"
-                id="progress${index}">
-                </div>
-
-            </div>
-
-            <div
-            class="progressText"
-            id="progressText${index}">
-
-                ОЖИДАНИЕ ФАРМА
-
-            </div>
-
-            <button
-            class="claimBtn disabledBtn"
-            id="claimSkin${index}"
-            disabled>
-
-                ПОЛУЧИТЬ DROPS
-
-            </button>
-
-        </div>
-
-        `;
-
-        skinsGrid.appendChild(card);
-
-    });
+`
 
 }
 
-renderSkins();
-
-/* STEAM AUTH */
-
-let steamAuthorized = false;
-
-const steamLoginBtn =
 document.getElementById(
-'steamLoginBtn');
+'featuredDropsGrid'
+).innerHTML =
+skins.map(createCard).join('')
 
-const steamStatusText =
 document.getElementById(
-'steamStatusText');
+'dropsGrid'
+).innerHTML =
+skins.map(createCard).join('')
 
-const profileSteamStatus =
+function showTab(tab,btn){
+
+const tabs = [
+'home',
+'drops',
+'leaderboard',
+'profile',
+'faq'
+]
+
+tabs.forEach(name=>{
+
 document.getElementById(
-'profileSteamStatus');
+name + 'Tab'
+).style.display = 'none'
 
-steamLoginBtn.onclick = ()=>{
+})
 
-    steamAuthorized = true;
-
-    steamStatusText.innerHTML =
-    'STEAM CONNECTED';
-
-    steamStatusText.style.color =
-    '#00d084';
-
-    profileSteamStatus.innerHTML =
-    'STEAM CONNECTED';
-
-    profileSteamStatus.style.color =
-    '#00d084';
-};
-
-/* SAVE TRADE LINK */
-
-const saveTradeBtn =
 document.getElementById(
-'saveTradeBtn');
+tab + 'Tab'
+).style.display = 'block'
 
-saveTradeBtn.onclick = ()=>{
+document
+.querySelectorAll('.navBtn')
+.forEach(button=>{
 
-    if(!steamAuthorized){
+button.classList.remove(
+'activeBtn'
+)
 
-        alert(
-        'Сначала войдите через Steam');
+})
 
-        return;
-    }
-
-    const tradeLink =
-    document.getElementById(
-    'tradeLinkInput').value;
-
-    if(
-    !tradeLink.includes(
-    'steamcommunity.com/tradeoffer')){
-
-        alert(
-        'Введите правильный Steam Trade Link');
-
-        return;
-    }
-
-    localStorage.setItem(
-    'steamTradeLink',
-    tradeLink);
-
-    saveTradeBtn.innerHTML =
-    'TRADE LINK СОХРАНЕН';
-
-    saveTradeBtn.style.background =
-    'linear-gradient(90deg,#00a86b,#00d084)';
-};
-
-/* REAL WATCH TIME */
-
-let watchedSeconds = 0;
-let watchedMinutes = 0;
-
-let farmStarted = false;
-let playerStarted = false;
-
-const playButton =
-document.querySelector(
-'.playButton');
-
-const liveBadge =
-document.querySelector(
-'.liveBadge');
-
-const streamViewers =
-document.querySelector(
-'.streamViewers');
-
-const mainProgressFill =
-document.getElementById(
-'mainProgressFill');
-
-const watchPercent =
-document.getElementById(
-'watchPercent');
-
-const watchMinutes =
-document.getElementById(
-'watchMinutes');
-
-const currentDropImage =
-document.getElementById(
-'currentDropImage');
-
-const dropDescription =
-document.getElementById(
-'dropDescription');
-
-playButton.onclick = ()=>{
-
-    if(!streamOnline){
-
-        alert(
-        'Стрим сейчас OFFLINE');
-
-        return;
-    }
-
-    if(!steamAuthorized){
-
-        alert(
-        'Сначала войдите через Steam');
-
-        return;
-    }
-
-    playerStarted = true;
-
-    streamViewers.innerHTML =
-    'WATCHING TWITCH STREAM';
-
-    startFarm();
-};
-
-function startFarm(){
-
-    if(farmStarted) return;
-
-    farmStarted = true;
-
-    setInterval(()=>{
-
-        if(!streamOnline)
-        return;
-
-        if(!playerStarted)
-        return;
-
-        if(document.hidden)
-        return;
-
-        watchedSeconds++;
-
-        if(watchedSeconds >= 60){
-
-            watchedSeconds = 0;
-
-            watchedMinutes++;
-
-            updateFarm();
-        }
-
-    },1000);
+btn.classList.add(
+'activeBtn')
 
 }
 
-function updateFarm(){
+document.getElementById(
+'steamLogin'
+).onclick = ()=>{
 
-    const totalMinutes = 480;
+steamConnected = true
 
-    const totalPercent =
-    (watchedMinutes / totalMinutes)
-    * 100;
+document.getElementById(
+'steamLogin'
+).innerHTML =
+'STEAM CONNECTED'
 
-    mainProgressFill.style.width =
-    totalPercent + '%';
+document.getElementById(
+'progressText'
+).innerHTML =
+'FARMING DROPS ACTIVE'
 
-    watchPercent.innerHTML =
-    Math.floor(totalPercent)
-    + '%';
+document
+.querySelectorAll('.lockText')
+.forEach(el=>{
 
-    watchMinutes.innerHTML =
-    watchedMinutes +
-    ' / 480 МИН';
+el.innerHTML =
+'DROPS FARMING ACTIVE'
 
-    let currentIndex = 0;
-
-    for(let i=0;i<skins.length;i++){
-
-        if(!skins[i].claimed){
-
-            currentIndex = i;
-            break;
-        }
-
-    }
-
-    const currentSkin =
-    skins[currentIndex];
-
-    currentDropImage.src =
-    currentSkin.image;
-
-    skins.forEach((skin,index)=>{
-
-        const fill =
-        document.getElementById(
-        'progress'+index);
-
-        const text =
-        document.getElementById(
-        'progressText'+index);
-
-        fill.style.width = '0%';
-
-        text.innerHTML =
-        'ОЖИДАНИЕ';
-
-    });
-
-    let previousMinutes = 0;
-
-    if(currentIndex > 0){
-
-        previousMinutes =
-        skins[currentIndex - 1]
-        .requiredMinutes;
-    }
-
-    const currentNeed =
-    currentSkin.requiredMinutes
-    - previousMinutes;
-
-    const currentWatched =
-    watchedMinutes
-    - previousMinutes;
-
-    let currentPercent =
-    (currentWatched / currentNeed)
-    * 100;
-
-    if(currentPercent < 0)
-    currentPercent = 0;
-
-    if(currentPercent > 100)
-    currentPercent = 100;
-
-    const activeFill =
-    document.getElementById(
-    'progress'+currentIndex);
-
-    const activeText =
-    document.getElementById(
-    'progressText'+currentIndex);
-
-    activeFill.style.width =
-    currentPercent + '%';
-
-    activeText.innerHTML =
-    Math.floor(currentPercent)
-    + '% WATCHED';
-
-    dropDescription.innerHTML =
-    'Сейчас фармится: ' +
-    currentSkin.name;
-
-    if(currentPercent >= 100){
-
-        const claimBtn =
-        document.getElementById(
-        'claimSkin'+currentIndex);
-
-        claimBtn.disabled = false;
-
-        claimBtn.classList.remove(
-        'disabledBtn');
-
-        claimBtn.classList.add(
-        'activeClaim');
-
-        claimBtn.onclick = ()=>{
-
-            skins[currentIndex]
-            .claimed = true;
-
-            claimBtn.innerHTML =
-            'DROP ПОЛУЧЕН';
-
-            claimBtn.classList.remove(
-            'activeClaim');
-
-            claimBtn.classList.add(
-            'claimedBtn');
-
-            claimBtn.disabled = true;
-
-            const savedTradeLink =
-            localStorage.getItem(
-            'steamTradeLink');
-
-            console.log(
-            'SEND SKIN:',
-            currentSkin.name);
-
-            console.log(
-            'TRADE LINK:',
-            savedTradeLink);
-
-            alert(
-            'DROP ' +
-            currentSkin.name +
-            ' отправлен в очередь выдачи.');
-
-            updateFarm();
-        };
-
-    }
+})
 
 }
 
-/* STREAM STATUS */
+setInterval(()=>{
 
-function updateStreamStatus(){
+if(!steamConnected)
+return
 
-    if(streamOnline){
+progress += .04
 
-        liveBadge.innerHTML =
-        'LIVE';
+if(progress > 100){
+progress = 100
+}
 
-        liveBadge.style.background =
-        '#00c853';
+document
+.querySelectorAll(
+'.skinProgressFill'
+)
+.forEach((bar,index)=>{
 
-        streamViewers.innerHTML =
-        'TWITCH STREAM LIVE';
+let local =
+progress - (index * 25)
 
-    }else{
+if(local < 0){
+local = 0
+}
 
-        liveBadge.innerHTML =
-        'OFFLINE';
+if(local > 100){
+local = 100
+}
 
-        liveBadge.style.background =
-        '#ff2b2b';
+bar.style.width =
+local + '%'
 
-        streamViewers.innerHTML =
-        'STREAM OFFLINE';
-    }
+})
+
+document.getElementById(
+'mainFill'
+).style.width =
+progress + '%'
+
+document.getElementById(
+'percentText'
+).innerHTML =
+Math.floor(progress) + '%'
+
+document.getElementById(
+'minutesText'
+).innerHTML =
+Math.floor(progress * 4.8)
++ ' / 480 MIN'
+
+},100)
+
+const endDate =
+new Date(
+'2026-05-30T22:00:00'
+)
+
+function updateTimer(){
+
+const now =
+new Date()
+
+const diff =
+endDate - now
+
+if(diff <= 0){
+
+document.getElementById(
+'eventTimer'
+).innerHTML =
+'EVENT ENDED'
+
+return
+}
+
+const days =
+Math.floor(diff / 1000 / 60 / 60 / 24)
+
+const hours =
+Math.floor(
+(diff / 1000 / 60 / 60) % 24
+)
+
+const mins =
+Math.floor(
+(diff / 1000 / 60) % 60
+)
+
+document.getElementById(
+'eventTimer'
+).innerHTML =
+
+days + 'D '
++ hours + 'H '
++ mins + 'M'
 
 }
 
-updateStreamStatus();
+setInterval(updateTimer,1000)
+
+updateTimer()
 
 </script>
 
