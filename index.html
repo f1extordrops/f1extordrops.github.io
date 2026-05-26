@@ -933,16 +933,17 @@ display:none;
 @media(max-width:950px){
 
 .topbar{
-flex-wrap:wrap;
-height:auto;
-padding:12px;
+height:70px;
+padding:0 12px;
+display:grid;
+grid-template-columns:44px 1fr 44px;
+align-items:center;
 gap:10px;
 }
 
 .logo{
-width:100%;
+font-size:20px;
 text-align:center;
-font-size:22px;
 }
 
 .burgerBtn{
@@ -976,7 +977,16 @@ min-width:auto;
 }
 
 .steamBtn{
-width:100%;
+
+width:auto;
+height:40px;
+
+padding:0 14px;
+
+font-size:10px;
+
+justify-self:center;
+
 }
 
 .hero{
@@ -1005,6 +1015,28 @@ height:270px;
 
 .skinsGrid{
 grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+#steamLogin{
+grid-column:2;
+grid-row:1;
+}
+
+.burgerBtn{
+grid-column:3;
+grid-row:1;
+justify-self:end;
+}
+
+.logo{
+grid-column:1;
+grid-row:1;
+font-size:0;
+}
+
+.logo::after{
+content:'F1EXTOR';
+font-size:18px;
 }
 
 }
@@ -1062,7 +1094,7 @@ object-fit:cover;
 #dropsTab .streamSection{
 
 margin-top:-35px;
-padding-bottom:60px;
+padding-bottom:28px;
 
 }
 
