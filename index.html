@@ -1014,7 +1014,7 @@ margin-right:6px;
 }
 
 .hero{
-padding-top:220px;
+padding-top:125px;
 }
 
 .streamGrid{
@@ -1053,15 +1053,37 @@ justify-self:end;
 }
 
 .logo{
+
 grid-column:1;
 grid-row:1;
+
 font-size:0;
+
+width:150px;
+
+overflow:visible;
+
+display:flex;
+align-items:center;
+
 }
 
 .logo::after{
+
 content:'F1EXTOR DROPS';
-font-size:14px;
+
+font-size:15px;
+
 white-space:nowrap;
+
+background:
+linear-gradient(90deg,#ff36bf,#9340ff);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+font-weight:900;
+
 }
 
 }
