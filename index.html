@@ -852,6 +852,45 @@ padding-bottom:18px;
 content:'−';
 }
 
+
+.roundsBar{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:18px;
+flex-wrap:wrap;
+}
+
+.roundLabel{
+font-size:12px;
+font-weight:900;
+color:#cfcfe0;
+letter-spacing:1px;
+}
+
+.roundBtn{
+width:42px;
+height:42px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.12);
+background:rgba(255,255,255,.04);
+color:#777;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+cursor:not-allowed;
+}
+
+.roundBtn.active{
+background:linear-gradient(90deg,#ff36bf,#9340ff);
+color:white;
+cursor:pointer;
+border:none;
+}
+
+.roundBtn.locked{
+opacity:.55;
+}
+
 /* FOOTER */
 
 .footer{
@@ -1200,8 +1239,13 @@ FAQ
 
 </div>
 
-<button class="steamBtn" id="steamLogin">
+<button
+class="steamBtn"
+id="steamLogin"
+onclick="fakeSteamLogin()">
+
 ВОЙТИ ЧЕРЕЗ STEAM
+
 </button>
 
 </header>
@@ -1300,7 +1344,7 @@ allowfullscreen="true">
 <div class="currentDrop">
 
 <img
-id="currentDropImage"
+id="homeCurrentDropImage"
 src="skin_1.png">
 
 </div>
@@ -1323,7 +1367,7 @@ style="width:0%;">
 
 <div
 class="progressText"
-id="progressText">
+id="homeProgressText">
 
 LOGIN THROUGH STEAM TO START
 
@@ -1455,7 +1499,7 @@ allowfullscreen="true">
 <div class="currentDrop">
 
 <img
-id="currentDropImage"
+id="dropsCurrentDropImage"
 src="skin_1.png">
 
 </div>
@@ -1478,7 +1522,7 @@ style="width:0%;">
 
 <div
 class="progressText"
-id="progressText">
+id="dropsProgressText">
 
 LOGIN THROUGH STEAM TO START
 
@@ -1547,7 +1591,21 @@ style="width:76px;height:76px;border-radius:18px;border:2px solid #ff36bf;object
 <div>
 <div style="font-size:24px;font-weight:900;">F1EXTOR_FAN</div>
 <div style="margin-top:6px;font-size:12px;color:#cfcfe0;">CONNECTED THROUGH STEAM</div>
-<div style="margin-top:10px;font-size:12px;color:#ff87e5;">COLLECTION COMPLETED: 0%</div>
+<div style="margin-top:10px;font-size:12px;color:#ff87e5;">COLLECTION COMPLETED:
+<span id="collectionPercentValue">0%</span></div>
+
+<div class="roundsBar">
+
+<div class="roundLabel">
+ROUND
+</div>
+
+<button class="roundBtn active">1</button>
+<button class="roundBtn locked">2</button>
+<button class="roundBtn locked">3</button>
+<button class="roundBtn locked">4</button>
+<button class="roundBtn locked">5</button>
+
 </div>
 
 </div>
@@ -1563,14 +1621,18 @@ style="width:76px;height:76px;border-radius:18px;border:2px solid #ff36bf;object
 <div class="skinInfo">
 <div class="skinRarity common">COMMON</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI SAR</div>
-<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#00d26a;">DELIVERED</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#00d26a;">IN PROGRESS</div>
+
+<div class="skinProgress">
+<div class="skinProgressFill"></div>
+</div>
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
 ROUND: #1<br>
 WATCHED: 8 HOURS<br>FARM STATUS: ACTIVE<br>
 RECEIVED: MAY 24
 </div>
-<button class="claimBtn">VIEW DROP</button>
+<button class="claimBtn">WATCHING</button>
 </div>
 </div>
 
@@ -1579,14 +1641,18 @@ RECEIVED: MAY 24
 <div class="skinInfo">
 <div class="skinRarity epic">EPIC</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI MP5</div>
-<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ff87e5;">IN DELIVERY</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ff87e5;">LOCKED</div>
+
+<div class="skinProgress">
+<div class="skinProgressFill"></div>
+</div>
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
 ROUND: #1<br>
 WATCHED: 8 HOURS<br>FARM STATUS: ACTIVE<br>
 EST DELIVERY: 2H
 </div>
-<button class="claimBtn">TRACK DELIVERY</button>
+<button class="claimBtn">LOCKED</button>
 </div>
 </div>
 
@@ -1595,7 +1661,18 @@ EST DELIVERY: 2H
 <div class="skinInfo">
 <div class="skinRarity legendary">LEGENDARY</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI AK47</div>
-<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ffd000;">TRADE LOCK</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ffd000;">LOCKED</div>
+
+<div class="skinProgress">
+<div class="skinProgressFill"></div>
+</div>
+
+<div class="skinProgress">
+
+<div class="skinProgressFill"></div>
+
+</div>
+
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
 ROUND: #1<br>
@@ -1611,14 +1688,18 @@ LOCK: 6 DAYS
 <div class="skinInfo">
 <div class="skinRarity rare">RARE</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI THOMPSON</div>
-<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#49a2ff;">EQUIPPED</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#49a2ff;">LOCKED</div>
+
+<div class="skinProgress">
+<div class="skinProgressFill"></div>
+</div>
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
 ROUND: #1<br>
 WATCHED: 8 HOURS<br>FARM STATUS: ACTIVE<br>
 USED IN: 14 RAIDS
 </div>
-<button class="claimBtn">EQUIPPED</button>
+<button class="claimBtn">LOCKED</button>
 </div>
 </div>
 
@@ -1791,7 +1872,8 @@ image:'skin_1.png',
 rarity:'LEGENDARY',
 class:'legendary',
 hours:'8 HOURS REQUIRED',
-description:'LIMITED TWITCH DROP'
+description:'LIMITED TWITCH DROP',
+completed:false
 },
 
 {
@@ -1800,7 +1882,8 @@ image:'skin_2.png',
 rarity:'RARE',
 class:'rare',
 hours:'8 HOURS REQUIRED',
-description:'WATCH F1EXTOR STREAM'
+description:'WATCH F1EXTOR STREAM',
+completed:false
 },
 
 {
@@ -1809,7 +1892,8 @@ image:'skin_3.png',
 rarity:'EPIC',
 class:'epic',
 hours:'8 HOURS REQUIRED',
-description:'LIMITED EVENT ITEM'
+description:'LIMITED EVENT ITEM',
+completed:false
 },
 
 {
@@ -1818,7 +1902,8 @@ image:'skin_4.png',
 rarity:'COMMON',
 class:'common',
 hours:'8 HOURS REQUIRED',
-description:'SAFARI COLLECTION'
+description:'SAFARI COLLECTION',
+completed:false
 }
 
 ]
@@ -1827,7 +1912,7 @@ function createCard(skin){
 
 return `
 
-<div class="skinCard">
+<div class="skinCard" data-drop-index="${skins.indexOf(skin)}">
 
 <div class="skinTop">
 
@@ -1966,7 +2051,11 @@ menu.classList.remove(
 )
 
 
+let activeTabName = 'home'
+
 function showTab(tab,btn){
+
+activeTabName = tab
 
 const tabs = [
 'home',
@@ -2116,6 +2205,525 @@ btn.parentElement.classList.toggle(
 })
 
 })
+
+const steamButton =
+document.getElementById(
+'steamLogin'
+)
+
+function fakeSteamLogin(){
+
+localStorage.setItem(
+'steamConnected',
+'true'
+)
+
+steamButton.innerHTML =
+'STEAM CONNECTED'
+
+steamButton.style.background =
+'linear-gradient(90deg,#00c853,#00e676)'
+
+updateFakeProgress()
+
+}
+
+function checkSteamLogin(){
+
+const connected =
+localStorage.getItem(
+'steamConnected'
+)
+
+if(connected === 'true'){
+
+steamButton.innerHTML =
+'STEAM CONNECTED'
+
+steamButton.style.background =
+'linear-gradient(90deg,#00c853,#00e676)'
+
+updateFakeProgress()
+
+}
+
+}
+
+let currentMinutes =
+parseInt(localStorage.getItem('watchMinutes')) || 0
+
+let currentDropIndex =
+parseInt(localStorage.getItem('currentDropIndex')) || 0
+
+let watchingStarted = false
+let watchingInterval = null
+
+function updateFakeProgress(){
+
+const savedMinutes =
+localStorage.getItem(
+'watchMinutes'
+)
+
+if(savedMinutes){
+
+currentMinutes =
+parseInt(savedMinutes)
+
+}
+
+startWatching()
+
+}
+
+
+function startWatching(){
+
+if(watchingStarted)
+return
+
+watchingStarted = true
+
+watchingInterval = setInterval(()=>{
+
+if(
+activeTabName !== 'home' &&
+activeTabName !== 'drops'
+){
+
+const inventoryStatuses =
+document.querySelectorAll(
+'#inventoryTab .inventoryStatus'
+)
+
+inventoryStatuses.forEach((status,index)=>{
+
+if(index === currentDropIndex){
+
+status.innerHTML =
+'⏸ PAUSED IN INVENTORY'
+
+status.style.color =
+'#ffb84d'
+
+}
+
+})
+
+return
+}
+
+const playerVisible =
+document.visibilityState === 'visible'
+
+if(!playerVisible){
+return
+}
+
+const inventoryStatuses =
+document.querySelectorAll(
+'#inventoryTab .inventoryStatus'
+)
+
+inventoryStatuses.forEach((status,index)=>{
+
+if(index === currentDropIndex){
+
+status.innerHTML =
+'IN PROGRESS'
+
+status.style.color =
+'#00d26a'
+
+}
+
+})
+
+currentMinutes++
+
+if(currentMinutes >= 480){
+
+skins[currentDropIndex].completed = true
+
+currentMinutes = 0
+
+currentDropIndex++
+
+if(currentDropIndex >= skins.length){
+
+currentDropIndex = 0
+
+}
+
+updateCurrentDrop()
+
+}
+
+localStorage.setItem(
+'watchMinutes',
+currentMinutes
+)
+
+localStorage.setItem(
+'currentDropIndex',
+currentDropIndex
+)
+
+const percent =
+Math.floor(
+(currentMinutes / 480) * 100
+)
+
+updateProgressUI(
+percent,
+currentMinutes
+)
+
+const totalProgress =
+Math.floor(
+((currentDropIndex * 100) + percent) / skins.length
+)
+
+const collectionText =
+document.getElementById(
+'collectionPercentValue'
+)
+
+if(collectionText){
+
+collectionText.innerHTML =
+totalProgress + '%'
+
+}
+
+},5000)
+
+}
+
+function updateProgressUI(
+percent,
+minutes
+){
+
+const fill1 =
+document.getElementById(
+'mainFill'
+)
+
+const fill2 =
+document.getElementById(
+'dropsMainFill'
+)
+
+const percent1 =
+document.getElementById(
+'percentText'
+)
+
+const percent2 =
+document.getElementById(
+'dropsPercentText'
+)
+
+const mins1 =
+document.getElementById(
+'minutesText'
+)
+
+const mins2 =
+document.getElementById(
+'dropsMinutesText'
+)
+
+const text =
+document.querySelectorAll(
+'#homeProgressText, #dropsProgressText'
+)
+
+if(fill1)
+fill1.style.width =
+percent + '%'
+
+if(fill2)
+fill2.style.width =
+percent + '%'
+
+if(percent1)
+percent1.innerHTML =
+percent + '%'
+
+if(percent2)
+percent2.innerHTML =
+percent + '%'
+
+if(mins1)
+mins1.innerHTML =
+minutes + ' / 480 MIN'
+
+if(mins2)
+mins2.innerHTML =
+minutes + ' / 480 MIN'
+
+const inventoryProgress =
+document.querySelectorAll(
+'#inventoryTab .skinProgressFill'
+)
+
+inventoryProgress.forEach((bar,index)=>{
+
+if(index === currentDropIndex){
+
+bar.style.width =
+percent + '%'
+
+}
+
+else if(index < currentDropIndex){
+
+bar.style.width = '100%'
+
+}
+
+else{
+
+bar.style.width = '0%'
+
+}
+
+})
+
+text.forEach(el=>{
+
+el.innerHTML =
+'WATCHING F1EXTOR STREAM'
+
+})
+
+const featuredCards =
+document.querySelectorAll(
+'#featuredDropsGrid .skinCard'
+)
+
+featuredCards.forEach((card,index)=>{
+
+const bar =
+card.querySelector('.skinProgressFill')
+
+const button =
+card.querySelector('.claimBtn')
+
+const status =
+card.querySelector('.skinStatus')
+
+if(!bar)
+return
+
+if(index === currentDropIndex){
+
+bar.style.width =
+percent + '%'
+
+status.innerHTML =
+'IN PROGRESS • ' + percent + '%'
+
+button.innerHTML =
+'WATCHING'
+
+}
+
+else if(index < currentDropIndex){
+
+bar.style.width = '100%'
+
+status.innerHTML =
+'✓ DROP RECEIVED'
+
+button.innerHTML =
+'CLAIMED'
+
+}
+
+else{
+
+bar.style.width = '0%'
+
+status.innerHTML =
+'🔒 LOCKED'
+
+button.innerHTML =
+'LOCKED'
+
+}
+
+})
+
+const dropsCards =
+document.querySelectorAll(
+'#dropsGrid .skinCard'
+)
+
+dropsCards.forEach((card,index)=>{
+
+const bar =
+card.querySelector('.skinProgressFill')
+
+const button =
+card.querySelector('.claimBtn')
+
+const status =
+card.querySelector('.skinStatus')
+
+if(!bar)
+return
+
+if(index === currentDropIndex){
+
+bar.style.width =
+percent + '%'
+
+status.innerHTML =
+'IN PROGRESS • ' + percent + '%'
+
+button.innerHTML =
+'WATCHING'
+
+}
+
+else if(index < currentDropIndex){
+
+bar.style.width = '100%'
+
+status.innerHTML =
+'✓ DROP RECEIVED'
+
+button.innerHTML =
+'CLAIMED'
+
+}
+
+else{
+
+bar.style.width = '0%'
+
+status.innerHTML =
+'🔒 LOCKED'
+
+button.innerHTML =
+'LOCKED'
+
+}
+
+})
+
+}
+
+function updateCurrentDrop(){
+
+const currentSkin =
+skins[currentDropIndex]
+
+const images =
+document.querySelectorAll(
+'#homeCurrentDropImage, #dropsCurrentDropImage'
+)
+
+images.forEach(img=>{
+
+img.src =
+currentSkin.image
+
+})
+
+const inventoryCards =
+document.querySelectorAll(
+'#inventoryTab .skinCard'
+)
+
+inventoryCards.forEach((card,index)=>{
+
+const status =
+card.querySelector(
+'.skinStatus'
+)
+
+const button =
+card.querySelector(
+'.claimBtn'
+)
+
+if(index < currentDropIndex){
+
+status.innerHTML =
+'DELIVERED'
+
+status.style.color =
+'#00d26a'
+
+button.innerHTML =
+'CLAIMED'
+
+card.style.opacity = '1'
+
+}
+
+else if(index === currentDropIndex){
+
+status.innerHTML =
+'IN PROGRESS'
+
+status.style.color =
+'#ff87e5'
+
+button.innerHTML =
+'WATCHING'
+
+card.style.opacity = '1'
+
+}
+
+else{
+
+status.innerHTML =
+'LOCKED'
+
+status.style.color =
+'#888'
+
+button.innerHTML =
+'LOCKED'
+
+card.style.opacity = '.45'
+
+}
+
+})
+
+const titles =
+document.querySelectorAll(
+'.progressTitle'
+)
+
+titles.forEach(title=>{
+
+title.innerHTML =
+'CURRENT DROP • ' +
+currentSkin.name
+
+})
+
+}
+
+updateCurrentDrop()
+
+const savedPercent =
+Math.floor((currentMinutes / 480) * 100)
+
+updateProgressUI(
+savedPercent,
+currentMinutes
+)
+
+checkSteamLogin()
 
 </script>
 
