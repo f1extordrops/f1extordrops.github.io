@@ -18,23 +18,13 @@ box-sizing:border-box;
 }
 
 body{
-
 font-family:'Orbitron',sans-serif;
-
-background:#08080f;
-
+background:#07070c;
 color:white;
-
 overflow-x:hidden;
-
 min-height:100vh;
-
 display:flex;
 flex-direction:column;
-}
-
-main{
-flex:1;
 }
 
 body::before{
@@ -42,7 +32,6 @@ body::before{
 content:'';
 
 position:fixed;
-
 inset:0;
 
 background:
@@ -52,7 +41,11 @@ url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1974&auto=
 background-size:cover;
 background-position:center;
 
-z-index:-1;
+z-index:-2;
+}
+
+main{
+flex:1;
 }
 
 /* TOPBAR */
@@ -66,7 +59,7 @@ left:0;
 
 width:100%;
 
-height:78px;
+height:70px;
 
 display:flex;
 align-items:center;
@@ -74,16 +67,19 @@ justify-content:space-between;
 
 padding:0 24px;
 
-background:rgba(0,0,0,.55);
+background:rgba(0,0,0,.58);
 
 backdrop-filter:blur(14px);
+
+border-bottom:
+1px solid rgba(255,255,255,.06);
 
 z-index:9999;
 }
 
 .logo{
 
-font-size:30px;
+font-size:28px;
 font-weight:900;
 
 background:
@@ -98,16 +94,16 @@ linear-gradient(90deg,#ff36bf,#9340ff);
 display:flex;
 align-items:center;
 
-gap:12px;
+gap:10px;
 }
 
 .navBtn{
 
-height:40px;
+height:38px;
 
-min-width:118px;
+min-width:108px;
 
-padding:0 18px;
+padding:0 16px;
 
 border:none;
 
@@ -120,15 +116,14 @@ color:white;
 
 cursor:pointer;
 
-font-size:13px;
+font-size:12px;
 
 font-family:'Orbitron',sans-serif;
 
-transition:.2s;
+transition:.25s;
 }
 
 .navBtn:hover{
-
 transform:translateY(-2px);
 }
 
@@ -143,9 +138,9 @@ linear-gradient(
 
 .steamBtn{
 
-height:48px;
+height:44px;
 
-padding:0 22px;
+padding:0 18px;
 
 border:none;
 
@@ -163,33 +158,27 @@ font-family:'Orbitron',sans-serif;
 
 cursor:pointer;
 
-font-size:13px;
-
-transition:.2s;
-}
-
-.steamBtn:hover{
-
-transform:translateY(-2px);
+font-size:12px;
+font-weight:900;
 }
 
 /* HERO */
 
 .hero{
 
-padding-top:150px;
+padding-top:120px;
 
 text-align:center;
 }
 
 .heroTitle{
 
-font-size:82px;
+font-size:58px;
 font-weight:900;
 
 line-height:.95;
 
-max-width:1000px;
+max-width:900px;
 
 margin:auto;
 
@@ -205,41 +194,39 @@ linear-gradient(
 
 .heroText{
 
-margin-top:24px;
+margin-top:18px;
 
-font-size:20px;
+font-size:16px;
 
 color:#d7d7df;
 }
 
 .eventLine{
 
-margin-top:34px;
+margin-top:24px;
 
 display:flex;
 justify-content:center;
 
-gap:50px;
+gap:34px;
 
-font-size:30px;
+font-size:20px;
 font-weight:900;
 }
 
 .eventLine span{
-
 color:#ff87e5;
 }
 
 .countdownBox{
 
-margin-top:34px;
+margin-top:22px;
 
-font-size:24px;
+font-size:18px;
 font-weight:900;
 }
 
 #eventTimer{
-
 color:#ff87e5;
 }
 
@@ -247,11 +234,11 @@ color:#ff87e5;
 
 .streamSection{
 
-max-width:1750px;
+max-width:1380px;
 
-margin:30px auto 0;
+margin:24px auto 0;
 
-padding:0 28px;
+padding:0 16px;
 }
 
 .streamGrid{
@@ -259,27 +246,25 @@ padding:0 28px;
 display:grid;
 
 grid-template-columns:
-minmax(0,1.75fr)
-420px;
+minmax(0,1fr)
+340px;
 
-gap:24px;
+gap:16px;
 
 align-items:start;
 }
 
-/* STREAMER */
-
 .streamerBar{
 
-height:72px;
+height:62px;
 
 display:flex;
 align-items:center;
 justify-content:space-between;
 
-padding:0 20px;
+padding:0 16px;
 
-border-radius:22px 22px 0 0;
+border-radius:18px 18px 0 0;
 
 background:
 rgba(12,12,18,.96);
@@ -295,13 +280,13 @@ border-bottom:none;
 display:flex;
 align-items:center;
 
-gap:14px;
+gap:10px;
 }
 
 .streamerAvatar{
 
-width:46px;
-height:46px;
+width:42px;
+height:42px;
 
 overflow:hidden;
 
@@ -318,97 +303,94 @@ object-fit:cover;
 
 .streamerName{
 
-font-size:16px;
+font-size:13px;
 font-weight:900;
 }
 
 .streamerGame{
 
-margin-top:4px;
+margin-top:3px;
 
-font-size:11px;
+font-size:10px;
 
 color:#cfcfe0;
 }
 
 .streamStatus{
 
-height:36px;
+height:32px;
 
-padding:0 16px;
+padding:0 12px;
 
 border-radius:999px;
 
 display:flex;
 align-items:center;
 
-gap:10px;
+gap:8px;
 
-font-size:12px;
+font-size:10px;
 font-weight:900;
-}
-
-.streamStatus.online{
 
 background:
-rgba(0,210,106,.16);
+rgba(0,210,106,.14);
 
 color:#00d26a;
 }
 
 .statusDot{
 
-width:10px;
-height:10px;
+width:8px;
+height:8px;
 
 border-radius:50%;
 
-background:currentColor;
+background:#00d26a;
 }
-
-/* PLAYER */
 
 .playerBox{
 
 overflow:hidden;
 
 border-radius:
-0 0 28px 28px;
+0 0 18px 18px;
 
 border:
 1px solid rgba(255,255,255,.08);
 
 border-top:none;
 
-height:820px;
-}
+height:500px;
 
-/* CHAT */
+background:black;
+}
 
 .chatBox{
 
 overflow:hidden;
 
-border-radius:28px;
+border-radius:18px;
 
 border:
 1px solid rgba(255,255,255,.08);
 
 background:black;
 
-height:914px;
+height:594px;
 }
 
 .chatHeader{
 
-height:60px;
+height:50px;
 
 display:flex;
 align-items:center;
 
-padding:0 20px;
+padding:0 16px;
 
 font-weight:900;
+
+font-size:14px;
 
 background:
 linear-gradient(
@@ -421,18 +403,18 @@ linear-gradient(
 
 .progressPanel{
 
-margin-top:18px;
+margin-top:12px;
 
-padding:18px;
+padding:12px;
 
-border-radius:22px;
+border-radius:16px;
 
 display:grid;
 
 grid-template-columns:
-90px 1fr 140px;
+66px 1fr 96px;
 
-gap:18px;
+gap:12px;
 
 align-items:center;
 
@@ -445,12 +427,12 @@ border:
 
 .currentDrop{
 
-width:86px;
-height:86px;
+width:62px;
+height:62px;
 
 overflow:hidden;
 
-border-radius:18px;
+border-radius:12px;
 
 border:
 2px solid #ff36bf;
@@ -466,16 +448,16 @@ object-fit:cover;
 
 .progressTitle{
 
-font-size:22px;
+font-size:16px;
 font-weight:900;
 }
 
 .mainProgress{
 
 width:100%;
-height:14px;
+height:10px;
 
-margin-top:14px;
+margin-top:10px;
 
 overflow:hidden;
 
@@ -491,14 +473,17 @@ width:0%;
 height:100%;
 
 background:
-linear-gradient(90deg,#ff36bf,#9340ff);
+linear-gradient(
+90deg,
+#ff36bf,
+#9340ff);
 }
 
 .progressText{
 
-margin-top:12px;
+margin-top:8px;
 
-font-size:14px;
+font-size:11px;
 
 color:#cfcfe2;
 }
@@ -507,58 +492,54 @@ color:#cfcfe2;
 
 text-align:right;
 
-font-size:15px;
+font-size:12px;
 font-weight:900;
 }
 
-/* SECTIONS */
+/* DROPS */
 
 .skinsSection{
 
-max-width:1550px;
+max-width:1380px;
+
+padding:90px 16px 60px;
 
 margin:auto;
-
-padding:130px 24px 90px;
 }
 
 .featuredSection{
-
-padding-top:35px!important;
+padding-top:28px!important;
 }
 
 .skinsTitle{
 
 text-align:center;
 
-font-size:60px;
+font-size:40px;
 font-weight:900;
 
-margin-bottom:40px;
+margin-bottom:24px;
 }
 
 .skinsTitle span{
-
 color:#ff88e5;
 }
-
-/* SKINS */
 
 .skinsGrid{
 
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(360px,1fr));
+repeat(auto-fit,minmax(250px,1fr));
 
-gap:26px;
+gap:16px;
 }
 
 .skinCard{
 
 overflow:hidden;
 
-border-radius:28px;
+border-radius:18px;
 
 background:
 linear-gradient(
@@ -571,23 +552,22 @@ border:
 
 transition:.25s;
 
-min-height:690px;
+min-height:540px;
 }
 
 .skinCard:hover{
-
-transform:translateY(-5px);
+transform:translateY(-3px);
 }
 
 .skinTop{
 
-height:64px;
+height:52px;
 
 display:flex;
 align-items:center;
 justify-content:space-between;
 
-padding:0 16px;
+padding:0 12px;
 }
 
 .creator{
@@ -595,27 +575,27 @@ padding:0 16px;
 display:flex;
 align-items:center;
 
-gap:12px;
+gap:8px;
 }
 
 .creator img{
 
-width:38px;
-height:38px;
+width:30px;
+height:30px;
 
 border-radius:50%;
 }
 
 .creatorName{
 
-font-size:14px;
+font-size:11px;
 font-weight:900;
 }
 
 .liveDot{
 
-width:10px;
-height:10px;
+width:8px;
+height:8px;
 
 border-radius:50%;
 
@@ -626,29 +606,28 @@ background:#00d26a;
 
 width:100%;
 
-height:420px;
+height:270px;
 
 object-fit:contain;
 
-padding:18px;
+padding:10px;
 }
 
 .skinInfo{
-
-padding:18px;
+padding:14px;
 }
 
 .skinRarity{
 
 width:max-content;
 
-margin:0 auto 16px;
+margin:0 auto 12px;
 
-padding:10px 20px;
+padding:7px 14px;
 
 border-radius:999px;
 
-font-size:12px;
+font-size:9px;
 font-weight:900;
 }
 
@@ -673,25 +652,18 @@ linear-gradient(
 #ffd000);
 
 color:black;
-
-font-size:16px;
-
-padding:14px 28px;
-
-box-shadow:
-0 0 25px rgba(255,190,0,.35);
 }
 
 .skinName{
 
 text-align:center;
 
-font-size:34px;
+font-size:20px;
 font-weight:900;
 
 line-height:1.1;
 
-min-height:78px;
+min-height:52px;
 
 display:flex;
 align-items:center;
@@ -700,21 +672,32 @@ justify-content:center;
 
 .skinHours{
 
-margin-top:14px;
+margin-top:10px;
 
 text-align:center;
 
-font-size:15px;
+font-size:12px;
 
 color:#ff87e5;
+}
+
+.skinStatus{
+
+margin-top:10px;
+
+text-align:center;
+
+font-size:10px;
+
+color:#d5d5df;
 }
 
 .skinProgress{
 
 width:100%;
-height:12px;
+height:8px;
 
-margin-top:18px;
+margin-top:12px;
 
 overflow:hidden;
 
@@ -736,16 +719,29 @@ linear-gradient(
 #9340ff);
 }
 
+.lockText{
+
+margin-top:10px;
+
+text-align:center;
+
+font-size:11px;
+
+line-height:1.5;
+
+color:#ffb0e7;
+}
+
 .claimBtn{
 
 width:100%;
-height:52px;
+height:42px;
 
-margin-top:18px;
+margin-top:12px;
 
 border:none;
 
-border-radius:14px;
+border-radius:10px;
 
 background:
 linear-gradient(
@@ -755,39 +751,32 @@ linear-gradient(
 
 color:white;
 
-font-size:13px;
+font-size:11px;
 
 font-family:'Orbitron',sans-serif;
 
 cursor:pointer;
 }
 
-/* LOCKED */
+/* FAQ */
 
-.lockText{
+.faqAccordion{
 
-margin-top:14px;
-
-text-align:center;
-
-font-size:13px;
-
-color:#ffb0e7;
-
-line-height:1.6;
-}
-
-/* LEADERBOARD */
-
-.leaderboardBox{
-
-max-width:1100px;
+max-width:1000px;
 
 margin:auto;
 
+display:flex;
+flex-direction:column;
+
+gap:16px;
+}
+
+.faqCard{
+
 overflow:hidden;
 
-border-radius:24px;
+border-radius:16px;
 
 background:
 rgba(10,10,16,.96);
@@ -796,106 +785,74 @@ border:
 1px solid rgba(255,255,255,.08);
 }
 
-.leaderRow{
+.faqBtn{
+
+width:100%;
+
+height:64px;
+
+padding:0 20px;
 
 display:flex;
+align-items:center;
 justify-content:space-between;
 
-padding:28px;
+border:none;
+
+background:none;
+
+color:white;
+
+font-size:14px;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+
+cursor:pointer;
+}
+
+.faqBtn::after{
+
+content:'+';
 
 font-size:22px;
 
-border-bottom:
-1px solid rgba(255,255,255,.06);
-}
-
-/* PROFILE */
-
-.statsGrid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(320px,1fr));
-
-gap:22px;
-}
-
-.statCard{
-
-padding:40px;
-
-border-radius:24px;
-
-background:
-rgba(10,10,16,.96);
-
-border:
-1px solid rgba(255,255,255,.08);
-
-text-align:center;
-}
-
-.statValue{
-
-font-size:54px;
-font-weight:900;
-
 color:#ff87e5;
 }
 
-.statLabel{
+.faqContent{
 
-margin-top:12px;
+max-height:0;
 
-color:#d3d3df;
-}
+overflow:hidden;
 
-/* FAQ */
+padding:0 20px;
 
-.faqItem{
-
-max-width:1100px;
-
-margin:0 auto 24px;
-
-padding:34px;
-
-border-radius:24px;
-
-background:
-rgba(10,10,16,.96);
-
-border:
-1px solid rgba(255,255,255,.08);
-}
-
-.faqQuestion{
-
-font-size:26px;
-font-weight:900;
-
-color:#ff87e5;
-}
-
-.faqAnswer{
-
-margin-top:18px;
+font-size:13px;
 
 line-height:1.8;
 
-font-size:16px;
+color:#d7d7e4;
 
-color:#d5d5df;
+transition:.3s;
+}
+
+.faqCard.active .faqContent{
+
+max-height:260px;
+
+padding-bottom:18px;
+}
+
+.faqCard.active .faqBtn::after{
+
+content:'−';
 }
 
 /* FOOTER */
 
 .footer{
 
-margin-top:auto;
-
-padding:60px 24px;
+padding:45px 20px;
 
 text-align:center;
 
@@ -904,13 +861,11 @@ border-top:
 
 background:
 rgba(8,8,14,.96);
-
-width:100%;
 }
 
 .footerLogo{
 
-font-size:48px;
+font-size:34px;
 font-weight:900;
 
 background:
@@ -925,9 +880,9 @@ linear-gradient(
 
 .footerText{
 
-margin-top:20px;
+margin-top:16px;
 
-font-size:15px;
+font-size:13px;
 font-weight:900;
 
 color:#d4d4df;
@@ -935,37 +890,13 @@ color:#d4d4df;
 
 .footerSub{
 
-margin-top:14px;
+margin-top:10px;
 
-font-size:12px;
+font-size:10px;
 
 letter-spacing:2px;
 
 color:#8f8fa3;
-}
-
-@media(max-width:1200px){
-
-.streamGrid{
-grid-template-columns:1fr;
-}
-
-.topbar{
-flex-direction:column;
-height:auto;
-padding:16px;
-gap:16px;
-}
-
-.heroTitle{
-font-size:58px;
-}
-
-.eventLine{
-flex-direction:column;
-gap:20px;
-}
-
 }
 
 </style>
@@ -992,12 +923,8 @@ HOME
 DROPS
 </button>
 
-<button class="navBtn" onclick="showTab('leaderboard',this)">
-LEADERBOARD
-</button>
-
-<button class="navBtn" onclick="showTab('profile',this)">
-PROFILE
+<button class="navBtn" onclick="showTab('inventory',this)">
+INVENTORY
 </button>
 
 <button class="navBtn" onclick="showTab('faq',this)">
@@ -1006,12 +933,8 @@ FAQ
 
 </div>
 
-<button
-class="steamBtn"
-id="steamLogin">
-
+<button class="steamBtn" id="steamLogin">
 ВОЙТИ ЧЕРЕЗ STEAM
-
 </button>
 
 </header>
@@ -1027,7 +950,7 @@ F1EXTOR TWITCH DROPS
 </div>
 
 <div class="heroText">
-Watch streams and unlock exclusive Safari Collection rewards.
+Official Twitch Drops Event by F1EXTOR
 </div>
 
 <div class="eventLine">
@@ -1038,19 +961,15 @@ Watch streams and unlock exclusive Safari Collection rewards.
 </div>
 
 <div>
-<span>TIME:</span>
-20:00 — 22:00 МСК
+<span>STREAM:</span>
+F1EXTOR
 </div>
 
 </div>
 
 <div class="countdownBox">
-
 EVENT STATUS:
-<span id="eventTimer">
-LOADING...
-</span>
-
+<span id="eventTimer">LOADING...</span>
 </div>
 
 </section>
@@ -1067,25 +986,26 @@ LOADING...
 
 <div class="streamerAvatar">
 
-<img src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
+<img
+src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
 
 </div>
 
 <div>
 
 <div class="streamerName">
-MEKSIKANEC74
+F1EXTOR
 </div>
 
 <div class="streamerGame">
-RUST DROPS EVENT
+OFFICIAL RUST DROPS STREAM
 </div>
 
 </div>
 
 </div>
 
-<div class="streamStatus online">
+<div class="streamStatus">
 
 <div class="statusDot"></div>
 
@@ -1098,34 +1018,38 @@ ONLINE
 <div class="playerBox">
 
 <iframe
-src="https://player.twitch.tv/?channel=meksikanec74&parent=localhost"
+src="https://player.twitch.tv/?channel=f1extor&parent=localhost"
 width="100%"
-height="820"
+height="500"
 frameborder="0"
 allowfullscreen="true">
 </iframe>
 
 </div>
 
+
 <div class="progressPanel">
 
 <div class="currentDrop">
 
-<img src="https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif">
+<img
+id="currentDropImage"
+src="https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif">
 
 </div>
 
 <div>
 
 <div class="progressTitle">
-DROPS PROGRESS
+CURRENT DROP
 </div>
 
 <div class="mainProgress">
 
 <div
 class="mainProgressFill"
-id="mainFill">
+id="mainFill"
+style="width:37%;">
 </div>
 
 </div>
@@ -1134,7 +1058,7 @@ id="mainFill">
 class="progressText"
 id="progressText">
 
-ВОЙДИТЕ ЧЕРЕЗ STEAM ЧТОБЫ ПОЛУЧАТЬ DROPS
+WATCHING F1EXTOR STREAM
 
 </div>
 
@@ -1143,16 +1067,17 @@ id="progressText">
 <div class="minutesBlock">
 
 <div id="percentText">
-0%
+37%
 </div>
 
 <div id="minutesText">
-0 / 480 MIN
+178 / 480 MIN
 </div>
 
 </div>
 
 </div>
+
 
 </div>
 
@@ -1163,9 +1088,9 @@ TWITCH CHAT
 </div>
 
 <iframe
-src="https://www.twitch.tv/embed/meksikanec74/chat?darkpopout&parent=localhost"
+src="https://www.twitch.tv/embed/f1extor/chat?darkpopout&parent=localhost"
 width="100%"
-height="854"
+height="544"
 frameborder="0"
 scrolling="no">
 </iframe>
@@ -1179,9 +1104,7 @@ scrolling="no">
 <section class="skinsSection featuredSection">
 
 <div class="skinsTitle">
-
 FEATURED <span>DROPS</span>
-
 </div>
 
 <div class="skinsGrid" id="featuredDropsGrid"></div>
@@ -1197,14 +1120,14 @@ FEATURED <span>DROPS</span>
 <section class="skinsSection">
 
 <div class="skinsTitle">
-
 SAFARI <span>COLLECTION</span>
-
 </div>
 
 <div class="skinsGrid" id="dropsGrid"></div>
 
 </section>
+
+<!-- ПЛЕЕР НИЖЕ -->
 
 <section class="streamSection">
 
@@ -1218,25 +1141,26 @@ SAFARI <span>COLLECTION</span>
 
 <div class="streamerAvatar">
 
-<img src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
+<img
+src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
 
 </div>
 
 <div>
 
 <div class="streamerName">
-MEKSIKANEC74
+F1EXTOR
 </div>
 
 <div class="streamerGame">
-RUST DROPS EVENT
+OFFICIAL RUST DROPS STREAM
 </div>
 
 </div>
 
 </div>
 
-<div class="streamStatus online">
+<div class="streamStatus">
 
 <div class="statusDot"></div>
 
@@ -1249,14 +1173,66 @@ ONLINE
 <div class="playerBox">
 
 <iframe
-src="https://player.twitch.tv/?channel=meksikanec74&parent=localhost"
+src="https://player.twitch.tv/?channel=f1extor&parent=localhost"
 width="100%"
-height="820"
+height="500"
 frameborder="0"
 allowfullscreen="true">
 </iframe>
 
 </div>
+
+
+<div class="progressPanel">
+
+<div class="currentDrop">
+
+<img
+id="currentDropImage"
+src="https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif">
+
+</div>
+
+<div>
+
+<div class="progressTitle">
+CURRENT DROP
+</div>
+
+<div class="mainProgress">
+
+<div
+class="mainProgressFill"
+id="dropsMainFill"
+style="width:37%;">
+</div>
+
+</div>
+
+<div
+class="progressText"
+id="progressText">
+
+WATCHING F1EXTOR STREAM
+
+</div>
+
+</div>
+
+<div class="minutesBlock">
+
+<div id="dropsPercentText">
+37%
+</div>
+
+<div id="dropsMinutesText">
+178 / 480 MIN
+</div>
+
+</div>
+
+</div>
+
 
 </div>
 
@@ -1267,9 +1243,9 @@ TWITCH CHAT
 </div>
 
 <iframe
-src="https://www.twitch.tv/embed/meksikanec74/chat?darkpopout&parent=localhost"
+src="https://www.twitch.tv/embed/f1extor/chat?darkpopout&parent=localhost"
 width="100%"
-height="854"
+height="544"
 frameborder="0"
 scrolling="no">
 </iframe>
@@ -1282,94 +1258,101 @@ scrolling="no">
 
 </div>
 
-<!-- LEADERBOARD -->
+<!-- INVENTORY -->
 
-<div id="leaderboardTab" style="display:none;">
-
-<section class="skinsSection">
-
-<div class="skinsTitle">
-
-TOP <span>FARMERS</span>
-
-</div>
-
-<div class="leaderboardBox">
-
-<div class="leaderRow">
-<span>#1 F1EXTOR</span>
-<span>182 HOURS</span>
-</div>
-
-<div class="leaderRow">
-<span>#2 SAFARIKING</span>
-<span>141 HOURS</span>
-</div>
-
-<div class="leaderRow">
-<span>#3 USER123</span>
-<span>99 HOURS</span>
-</div>
-
-<div class="leaderRow">
-<span>#4 DROPHUNTER</span>
-<span>77 HOURS</span>
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-<!-- PROFILE -->
-
-<div id="profileTab" style="display:none;">
+<div id="inventoryTab" style="display:none;">
 
 <section class="skinsSection">
 
 <div class="skinsTitle">
-
-MY <span>PROFILE</span>
-
+MY <span>INVENTORY</span>
 </div>
 
-<div class="statsGrid">
+<div class="activityBox" style="margin-bottom:24px;">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
 
-<div class="statCard">
+<div style="display:flex;align-items:center;gap:18px;">
 
-<div class="statValue">
-17
-</div>
+<img
+src="https://avatars.cloudflare.steamstatic.com/fc2b1f3c2b5b1e7a2f.jpg"
+style="width:76px;height:76px;border-radius:18px;border:2px solid #ff36bf;object-fit:cover;">
 
-<div class="statLabel">
-FARM LEVEL
-</div>
-
-</div>
-
-<div class="statCard">
-
-<div class="statValue">
-42H
-</div>
-
-<div class="statLabel">
-WATCHED
+<div>
+<div style="font-size:24px;font-weight:900;">F1EXTOR_FAN</div>
+<div style="margin-top:6px;font-size:12px;color:#cfcfe0;">CONNECTED THROUGH STEAM</div>
+<div style="margin-top:10px;font-size:12px;color:#ff87e5;">COLLECTION COMPLETED: 37%</div>
 </div>
 
 </div>
 
-<div class="statCard">
-
-<div class="statValue">
-12
 </div>
 
-<div class="statLabel">
-CLAIMED DROPS
 </div>
 
+<div class="skinsGrid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+
+<div class="skinCard" style="min-height:420px;">
+<img class="skinImage" style="height:180px;padding:18px;" src="https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif">
+<div class="skinInfo">
+<div class="skinRarity common">COMMON</div>
+<div class="skinName" style="font-size:18px;min-height:auto;">SAFARI SAR</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#00d26a;">DELIVERED</div>
+<div class="lockText" style="margin-top:12px;line-height:1.8;">
+EVENT: SAFARI COLLECTION<br>
+ROUND: #2<br>
+WATCHED: 8 HOURS<br>
+RECEIVED: MAY 24
+</div>
+<button class="claimBtn">VIEW DROP</button>
+</div>
+</div>
+
+<div class="skinCard" style="min-height:420px;">
+<img class="skinImage" style="height:180px;padding:18px;" src="https://i.imgur.com/Fx8XG6v.png">
+<div class="skinInfo">
+<div class="skinRarity epic">EPIC</div>
+<div class="skinName" style="font-size:18px;min-height:auto;">SAFARI MP5</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ff87e5;">IN DELIVERY</div>
+<div class="lockText" style="margin-top:12px;line-height:1.8;">
+EVENT: SAFARI COLLECTION<br>
+ROUND: #3<br>
+WATCHED: 8 HOURS<br>
+EST DELIVERY: 2H
+</div>
+<button class="claimBtn">TRACK DELIVERY</button>
+</div>
+</div>
+
+<div class="skinCard" style="min-height:420px;">
+<img class="skinImage" style="height:180px;padding:18px;" src="https://i.imgur.com/8Km9tLL.png">
+<div class="skinInfo">
+<div class="skinRarity legendary">LEGENDARY</div>
+<div class="skinName" style="font-size:18px;min-height:auto;">SAFARI AK47</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ffd000;">TRADE LOCK</div>
+<div class="lockText" style="margin-top:12px;line-height:1.8;">
+EVENT: SAFARI COLLECTION<br>
+ROUND: #5<br>
+WATCHED: 8 HOURS<br>
+LOCK: 6 DAYS
+</div>
+<button class="claimBtn">LOCKED</button>
+</div>
+</div>
+
+<div class="skinCard" style="min-height:420px;">
+<img class="skinImage" style="height:180px;padding:18px;" src="https://i.imgur.com/Fx8XG6v.png">
+<div class="skinInfo">
+<div class="skinRarity rare">RARE</div>
+<div class="skinName" style="font-size:18px;min-height:auto;">SAFARI THOMPSON</div>
+<div class="skinStatus" style="margin-top:14px;font-size:11px;color:#49a2ff;">EQUIPPED</div>
+<div class="lockText" style="margin-top:12px;line-height:1.8;">
+EVENT: SAFARI COLLECTION<br>
+ROUND: #1<br>
+WATCHED: 8 HOURS<br>
+USED IN: 14 RAIDS
+</div>
+<button class="claimBtn">EQUIPPED</button>
+</div>
 </div>
 
 </div>
@@ -1390,32 +1373,47 @@ FAQ & <span>GUIDE</span>
 
 </div>
 
-<div class="faqItem">
+<div class="faqAccordion">
 
-<div class="faqQuestion">
-HOW DO I START FARMING DROPS?
-</div>
+<div class="faqCard">
 
-<div class="faqAnswer">
+<button class="faqBtn">
+HOW TO CONNECT STEAM?
+</button>
 
-1. Login via Steam.<br><br>
-2. Open the stream.<br><br>
-3. Keep the stream active.<br><br>
-4. Progress starts only after Steam authorization.
+<div class="faqContent">
 
-</div>
+Press STEAM LOGIN and authorize your account.
 
 </div>
 
-<div class="faqItem">
-
-<div class="faqQuestion">
-HOW LONG DOES EACH DROP TAKE?
 </div>
 
-<div class="faqAnswer">
+<div class="faqCard">
 
-Each Safari Collection reward requires 8 hours of watch time.
+<button class="faqBtn">
+HOW DO DROPS WORK?
+</button>
+
+<div class="faqContent">
+
+Watch F1EXTOR stream to receive progress.
+
+</div>
+
+</div>
+
+<div class="faqCard">
+
+<button class="faqBtn">
+HOW TO CLAIM DROPS?
+</button>
+
+<div class="faqContent">
+
+Once progress reaches 100%, the next drop starts automatically.
+
+</div>
 
 </div>
 
@@ -1438,17 +1436,12 @@ F1EXTOR.COM
 </div>
 
 <div class="footerSub">
-
-TWITCH DROPS PLATFORM • RUST EVENT SYSTEM • POWERED BY F1EXTOR
-
+OFFICIAL TWITCH DROPS PLATFORM BY F1EXTOR
 </div>
 
 </footer>
 
 <script>
-
-let steamConnected = false
-let progress = 0
 
 const skins = [
 
@@ -1456,14 +1449,44 @@ const skins = [
 name:'SAFARI SAR',
 image:'https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif',
 rarity:'COMMON',
-class:'common'
+class:'common',
+hours:'${skin.hours}'
 },
 
 {
 name:'SAFARI THOMPSON',
 image:'https://i.imgur.com/8Km9tLL.png',
 rarity:'RARE',
-class:'rare'
+class:'rare',
+hours:'8 HOURS REQUIRED'
+},
+
+{
+name:'SAFARI MP5',
+image:'https://i.imgur.com/Fx8XG6v.png',
+rarity:'EPIC',
+class:'epic',
+hours:'8 HOURS REQUIRED'
+},
+
+{
+name:'SAFARI AK47',
+image:'https://i.imgur.com/8Km9tLL.png',
+rarity:'LEGENDARY',
+class:'legendary',
+hours:'8 HOURS REQUIRED'
+}
+
+]
+
+/* OLD ARRAY BELOW DISABLED */
+/*
+
+{
+name:'SAFARI SAR',
+image:'https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif',
+rarity:'COMMON',
+class:'common'
 },
 
 {
@@ -1480,7 +1503,7 @@ rarity:'LEGENDARY',
 class:'legendary'
 }
 
-]
+*/
 
 function createCard(skin){
 
@@ -1495,7 +1518,7 @@ return `
 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
 
 <div class="creatorName">
-MEKSIKANEC74
+F1EXTOR
 </div>
 
 </div>
@@ -1522,17 +1545,18 @@ ${skin.name}
 8 HOURS REQUIRED
 </div>
 
+<div class="skinStatus">
+LOCKED
+</div>
+
 <div class="skinProgress">
 
 <div class="skinProgressFill"></div>
 
 </div>
 
-<div
-class="lockText">
-
-ВОЙДИТЕ ЧЕРЕЗ STEAM ЧТОБЫ ПОЛУЧАТЬ DROPS
-
+<div class="lockText">
+WATCH F1EXTOR STREAM
 </div>
 
 <button class="claimBtn">
@@ -1562,8 +1586,7 @@ function showTab(tab,btn){
 const tabs = [
 'home',
 'drops',
-'leaderboard',
-'profile',
+'inventory',
 'faq'
 ]
 
@@ -1593,84 +1616,6 @@ btn.classList.add(
 'activeBtn')
 
 }
-
-document.getElementById(
-'steamLogin'
-).onclick = ()=>{
-
-steamConnected = true
-
-document.getElementById(
-'steamLogin'
-).innerHTML =
-'STEAM CONNECTED'
-
-document.getElementById(
-'progressText'
-).innerHTML =
-'FARMING DROPS ACTIVE'
-
-document
-.querySelectorAll('.lockText')
-.forEach(el=>{
-
-el.innerHTML =
-'DROPS FARMING ACTIVE'
-
-})
-
-}
-
-setInterval(()=>{
-
-if(!steamConnected)
-return
-
-progress += .04
-
-if(progress > 100){
-progress = 100
-}
-
-document
-.querySelectorAll(
-'.skinProgressFill'
-)
-.forEach((bar,index)=>{
-
-let local =
-progress - (index * 25)
-
-if(local < 0){
-local = 0
-}
-
-if(local > 100){
-local = 100
-}
-
-bar.style.width =
-local + '%'
-
-})
-
-document.getElementById(
-'mainFill'
-).style.width =
-progress + '%'
-
-document.getElementById(
-'percentText'
-).innerHTML =
-Math.floor(progress) + '%'
-
-document.getElementById(
-'minutesText'
-).innerHTML =
-Math.floor(progress * 4.8)
-+ ' / 480 MIN'
-
-},100)
 
 const endDate =
 new Date(
@@ -1721,6 +1666,20 @@ days + 'D '
 setInterval(updateTimer,1000)
 
 updateTimer()
+
+document
+.querySelectorAll('.faqBtn')
+.forEach(btn=>{
+
+btn.addEventListener('click',()=>{
+
+btn.parentElement.classList.toggle(
+'active'
+)
+
+})
+
+})
 
 </script>
 
