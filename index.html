@@ -1756,43 +1756,121 @@ const streamer = 'f1extor';
 
 try{
 
-const response = await fetch(`https://decapi.me/twitch/uptime/${streamer}`);
+const response =
+await fetch(
+`https://decapi.me/twitch/uptime/${streamer}`,
+{
+cache:'no-cache'
+}
+);
 
-const text = await response.text();
+const text =
+await response.text();
 
-const status =
-document.getElementById('streamStatus');
+const isOffline =
+text.toLowerCase().includes(
+'offline'
+);
 
-const statusText =
-document.getElementById('statusText');
+const homeStatus =
+document.getElementById(
+'streamStatus'
+);
 
-if(
-text.toLowerCase().includes('offline')
-){
+const homeText =
+document.getElementById(
+'statusText'
+);
 
-status.classList.remove(
+const dropsStatus =
+document.getElementById(
+'dropsStreamStatus'
+);
+
+const dropsText =
+document.getElementById(
+'dropsStatusText'
+);
+
+if(isOffline){
+
+if(homeStatus){
+
+homeStatus.classList.remove(
 'onlineStatus'
 );
 
-status.classList.add(
+homeStatus.classList.add(
 'offlineStatus'
 );
 
-statusText.innerHTML =
+}
+
+if(homeText){
+
+homeText.innerHTML =
 'OFFLINE';
+
+}
+
+if(dropsStatus){
+
+dropsStatus.classList.remove(
+'onlineStatus'
+);
+
+dropsStatus.classList.add(
+'offlineStatus'
+);
+
+}
+
+if(dropsText){
+
+dropsText.innerHTML =
+'OFFLINE';
+
+}
 
 }else{
 
-status.classList.remove(
+if(homeStatus){
+
+homeStatus.classList.remove(
 'offlineStatus'
 );
 
-status.classList.add(
+homeStatus.classList.add(
 'onlineStatus'
 );
 
-statusText.innerHTML =
+}
+
+if(homeText){
+
+homeText.innerHTML =
 'ONLINE';
+
+}
+
+if(dropsStatus){
+
+dropsStatus.classList.remove(
+'offlineStatus'
+);
+
+dropsStatus.classList.add(
+'onlineStatus'
+);
+
+}
+
+if(dropsText){
+
+dropsText.innerHTML =
+'ONLINE';
+
+}
 
 }
 
@@ -1800,10 +1878,33 @@ statusText.innerHTML =
 
 console.log(e);
 
-}
+const homeText =
+document.getElementById(
+'statusText'
+);
+
+const dropsText =
+document.getElementById(
+'dropsStatusText'
+);
+
+if(homeText){
+
+homeText.innerHTML =
+'OFFLINE';
 
 }
 
+if(dropsText){
+
+dropsText.innerHTML =
+'OFFLINE';
+
+}
+
+}
+
+}
 checkStreamerStatus();
 
 setInterval(
