@@ -961,10 +961,32 @@ cursor:pointer;
 }
 
 .topNav{
+
 display:none;
-width:100%;
+
+position:absolute;
+
+top:78px;
+right:12px;
+
+width:180px;
+
+padding:10px;
+
+border-radius:16px;
+
+background:rgba(10,10,16,.96);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(12px);
+
 grid-template-columns:1fr;
+
 gap:8px;
+
+z-index:99999;
+
 }
 
 .topNav.mobileOpen{
@@ -981,11 +1003,13 @@ min-width:auto;
 width:auto;
 height:40px;
 
-padding:0 14px;
+padding:0 12px;
 
-font-size:10px;
+font-size:9px;
 
-justify-self:center;
+justify-self:end;
+
+margin-right:6px;
 
 }
 
@@ -1035,8 +1059,9 @@ font-size:0;
 }
 
 .logo::after{
-content:'F1EXTOR';
-font-size:18px;
+content:'F1EXTOR DROPS';
+font-size:14px;
+white-space:nowrap;
 }
 
 }
