@@ -338,6 +338,40 @@ rgba(0,210,106,.14);
 color:#00d26a;
 }
 
+.onlineStatus{
+
+background:
+rgba(0,210,106,.14);
+
+color:#00d26a;
+
+}
+
+.onlineStatus .statusDot{
+
+background:#00d26a;
+
+box-shadow:0 0 10px #00d26a;
+
+}
+
+.offlineStatus{
+
+background:
+rgba(255,0,0,.14);
+
+color:#ff4d4d;
+
+}
+
+.offlineStatus .statusDot{
+
+background:#ff2b2b;
+
+box-shadow:0 0 10px #ff2b2b;
+
+}
+
 .statusDot{
 
 width:8px;
@@ -1011,11 +1045,11 @@ OFFICIAL RUST DROPS STREAM
 
 </div>
 
-<div class="streamStatus">
+<div class="streamStatus" id="streamStatus">
 
-<div class="statusDot"></div>
+<div class="statusDot" id="statusDot"></div>
 
-ONLINE
+<span id="statusText">CHECKING...</span>
 
 </div>
 
@@ -1713,6 +1747,67 @@ btn.parentElement.classList.toggle(
 })
 
 })
+
+async function checkStreamerStatus(){
+
+const streamer = 'f1extor';
+
+try{
+
+const response = await fetch(`https://decapi.me/twitch/uptime/${streamer}`);
+
+const text = await response.text();
+
+const status =
+document.getElementById('streamStatus');
+
+const statusText =
+document.getElementById('statusText');
+
+if(
+text.toLowerCase().includes('offline')
+){
+
+status.classList.remove(
+'onlineStatus'
+);
+
+status.classList.add(
+'offlineStatus'
+);
+
+statusText.innerHTML =
+'OFFLINE';
+
+}else{
+
+status.classList.remove(
+'offlineStatus'
+);
+
+status.classList.add(
+'onlineStatus'
+);
+
+statusText.innerHTML =
+'ONLINE';
+
+}
+
+}catch(e){
+
+console.log(e);
+
+}
+
+}
+
+checkStreamerStatus();
+
+setInterval(
+checkStreamerStatus,
+60000
+);
 
 </script>
 
