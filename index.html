@@ -222,7 +222,7 @@ color:#ff87e5;
 
 margin-top:22px;
 
-font-size:18px;
+font-size:24px;
 font-weight:900;
 }
 
@@ -245,9 +245,7 @@ padding:0 16px;
 
 display:grid;
 
-grid-template-columns:
-minmax(0,1fr)
-340px;
+grid-template-columns:minmax(0,1fr) 290px;
 
 gap:16px;
 
@@ -858,7 +856,7 @@ content:'−';
 
 .footer{
 
-padding:45px 20px;
+padding:26px 20px;
 
 text-align:center;
 
@@ -907,7 +905,26 @@ color:#8f8fa3;
 
 
 
-/* MOBILE BURGER MENU */
+/* DESKTOP STREAM FIX */
+
+.streamGrid{
+align-items:start;
+}
+
+.playerBox iframe{
+display:block;
+}
+
+/* INVENTORY EXTRA */
+
+.activityBox{
+padding:18px;
+border-radius:18px;
+background:rgba(10,10,16,.95);
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* MOBILE MENU */
 
 .burgerBtn{
 display:none;
@@ -916,54 +933,37 @@ display:none;
 @media(max-width:950px){
 
 .topbar{
+flex-wrap:wrap;
 height:auto;
 padding:12px;
-flex-wrap:wrap;
 gap:10px;
 }
 
 .logo{
-font-size:22px;
 width:100%;
 text-align:center;
+font-size:22px;
 }
 
 .burgerBtn{
-
 display:flex;
-
 width:44px;
 height:44px;
-
 border:none;
-
 border-radius:12px;
-
 background:rgba(255,255,255,.08);
-
 color:white;
-
 font-size:24px;
-
 align-items:center;
 justify-content:center;
-
 cursor:pointer;
-
 }
 
 .topNav{
-
 display:none;
-
 width:100%;
-
 grid-template-columns:1fr;
-
 gap:8px;
-
-animation:fadeMenu .2s ease;
-
 }
 
 .topNav.mobileOpen{
@@ -977,29 +977,10 @@ min-width:auto;
 
 .steamBtn{
 width:100%;
-font-size:11px;
-height:40px;
 }
 
 .hero{
 padding-top:220px;
-}
-
-.heroTitle{
-font-size:34px;
-line-height:1;
-padding:0 10px;
-}
-
-.heroText{
-font-size:13px;
-padding:0 12px;
-}
-
-.eventLine{
-flex-direction:column;
-gap:10px;
-font-size:15px;
 }
 
 .streamGrid{
@@ -1022,42 +1003,13 @@ height:320px;
 height:270px;
 }
 
-.progressPanel{
-grid-template-columns:56px 1fr;
-}
-
-.minutesBlock{
-grid-column:1/-1;
-text-align:left;
-}
-
 .skinsGrid{
 grid-template-columns:repeat(2,minmax(0,1fr));
-gap:10px;
-}
-
-.skinImage{
-height:110px;
-padding:10px;
-}
-
-.skinName{
-font-size:13px;
-min-height:38px;
-}
-
-.claimBtn{
-height:36px;
-font-size:10px;
 }
 
 }
 
 @media(max-width:950px) and (orientation:landscape){
-
-.hero{
-padding-top:120px;
-}
 
 .streamGrid{
 grid-template-columns:1fr 280px;
@@ -1083,30 +1035,29 @@ height:340px;
 grid-template-columns:repeat(4,minmax(0,1fr));
 }
 
-.skinImage{
-height:95px;
-}
-
-.topNav.mobileOpen{
-grid-template-columns:repeat(4,1fr);
+.hero{
+padding-top:120px;
 }
 
 }
 
-@keyframes fadeMenu{
+.streamerAvatar,
+.creator img{
 
-from{
-opacity:0;
-transform:translateY(-10px);
-}
+box-shadow:
+0 0 18px #ff008c,
+0 0 34px rgba(255,0,140,.55);
 
-to{
-opacity:1;
-transform:translateY(0);
-}
+border:2px solid #ff36bf;
 
 }
 
+.streamerAvatar img,
+.creator img{
+
+object-fit:cover;
+
+}
 
 </style>
 
@@ -1200,7 +1151,7 @@ EVENT STATUS:
 <div class="streamerAvatar">
 
 <img
-src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
+src="avatar.png">
 
 </div>
 
@@ -1247,7 +1198,7 @@ allowfullscreen="true">
 
 <img
 id="currentDropImage"
-src="skin_1.png"
+src="skin_1.png">
 
 </div>
 
@@ -1355,7 +1306,7 @@ SAFARI <span>COLLECTION</span>
 <div class="streamerAvatar">
 
 <img
-src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
+src="avatar.png">
 
 </div>
 
@@ -1505,15 +1456,15 @@ style="width:76px;height:76px;border-radius:18px;border:2px solid #ff36bf;object
 <div class="skinsGrid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
 
 <div class="skinCard" style="min-height:420px;">
-<img class="skinImage" style="height:180px;padding:18px;" src="https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif">
+<img class="skinImage" style="height:180px;padding:18px;" src="skin_1.png">
 <div class="skinInfo">
 <div class="skinRarity common">COMMON</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI SAR</div>
 <div class="skinStatus" style="margin-top:14px;font-size:11px;color:#00d26a;">DELIVERED</div>
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
-ROUND: #2<br>
-WATCHED: 8 HOURS<br>
+ROUND: #1<br>
+WATCHED: 8 HOURS<br>FARM STATUS: ACTIVE<br>
 RECEIVED: MAY 24
 </div>
 <button class="claimBtn">VIEW DROP</button>
@@ -1528,8 +1479,8 @@ RECEIVED: MAY 24
 <div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ff87e5;">IN DELIVERY</div>
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
-ROUND: #3<br>
-WATCHED: 8 HOURS<br>
+ROUND: #1<br>
+WATCHED: 8 HOURS<br>FARM STATUS: ACTIVE<br>
 EST DELIVERY: 2H
 </div>
 <button class="claimBtn">TRACK DELIVERY</button>
@@ -1537,15 +1488,15 @@ EST DELIVERY: 2H
 </div>
 
 <div class="skinCard" style="min-height:420px;">
-<img class="skinImage" style="height:180px;padding:18px;" src="skin_4.png">
+<img class="skinImage" style="height:180px;padding:18px;" src="skin_3.png">
 <div class="skinInfo">
 <div class="skinRarity legendary">LEGENDARY</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI AK47</div>
 <div class="skinStatus" style="margin-top:14px;font-size:11px;color:#ffd000;">TRADE LOCK</div>
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
-ROUND: #5<br>
-WATCHED: 8 HOURS<br>
+ROUND: #1<br>
+WATCHED: 8 HOURS<br>FARM STATUS: ACTIVE<br>
 LOCK: 6 DAYS
 </div>
 <button class="claimBtn">LOCKED</button>
@@ -1553,7 +1504,7 @@ LOCK: 6 DAYS
 </div>
 
 <div class="skinCard" style="min-height:420px;">
-<img class="skinImage" style="height:180px;padding:18px;" src="skin_3.png">
+<img class="skinImage" style="height:180px;padding:18px;" src="skin_4.png">
 <div class="skinInfo">
 <div class="skinRarity rare">RARE</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI THOMPSON</div>
@@ -1561,7 +1512,7 @@ LOCK: 6 DAYS
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
 ROUND: #1<br>
-WATCHED: 8 HOURS<br>
+WATCHED: 8 HOURS<br>FARM STATUS: ACTIVE<br>
 USED IN: 14 RAIDS
 </div>
 <button class="claimBtn">EQUIPPED</button>
@@ -1629,6 +1580,78 @@ Once progress reaches 100%, the next drop starts automatically.
 </div>
 
 </div>
+
+
+<div class="faqCard">
+
+<button class="faqBtn">
+HOW LONG DO I NEED TO WATCH?
+</button>
+
+<div class="faqContent">
+
+Each drop requires approximately 8 HOURS of watch time on F1EXTOR Twitch stream.
+
+</div>
+
+</div>
+
+<div class="faqCard">
+
+<button class="faqBtn">
+CAN I WATCH ON MOBILE?
+</button>
+
+<div class="faqContent">
+
+Yes. Twitch Drops progress works on mobile devices, tablets and desktop.
+
+</div>
+
+</div>
+
+<div class="faqCard">
+
+<button class="faqBtn">
+HOW DO I RECEIVE MY SKINS?
+</button>
+
+<div class="faqContent">
+
+After reaching the required watch time the skin is automatically delivered to your connected Steam account.
+
+</div>
+
+</div>
+
+<div class="faqCard">
+
+<button class="faqBtn">
+DO I NEED TO KEEP SOUND ENABLED?
+</button>
+
+<div class="faqContent">
+
+No. Sound may be muted. The stream only needs to remain open and active.
+
+</div>
+
+</div>
+
+<div class="faqCard">
+
+<button class="faqBtn">
+WHAT HAPPENS AFTER EVENT ENDS?
+</button>
+
+<div class="faqContent">
+
+All unclaimed drops expire after the event ends. Make sure to claim rewards before the timer reaches zero.
+
+</div>
+
+</div>
+
 
 </div>
 
@@ -1707,7 +1730,7 @@ return `
 
 <div class="creator">
 
-<img src="https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_70x70.png">
+<img src="avatar.png">
 
 <div class="creatorName">
 F1EXTOR
@@ -1959,11 +1982,17 @@ Math.floor(
 (diff / 1000 / 60) % 60
 )
 
+const secs =
+Math.floor(
+(diff / 1000) % 60
+)
+
 timer.innerHTML =
 
 days + 'D '
 + hours + 'H '
-+ mins + 'M'
++ mins + 'M '
++ secs + 'S'
 
 }
 
