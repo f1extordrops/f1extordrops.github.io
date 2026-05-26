@@ -338,40 +338,6 @@ rgba(0,210,106,.14);
 color:#00d26a;
 }
 
-.onlineStatus{
-
-background:
-rgba(0,210,106,.14);
-
-color:#00d26a;
-
-}
-
-.onlineStatus .statusDot{
-
-background:#00d26a;
-
-box-shadow:0 0 10px #00d26a;
-
-}
-
-.offlineStatus{
-
-background:
-rgba(255,0,0,.14);
-
-color:#ff4d4d;
-
-}
-
-.offlineStatus .statusDot{
-
-background:#ff2b2b;
-
-box-shadow:0 0 10px #ff2b2b;
-
-}
-
 .statusDot{
 
 width:8px;
@@ -941,55 +907,93 @@ color:#8f8fa3;
 
 
 
-/* FULL MOBILE RESPONSIVE FIX */
+/* MOBILE BURGER MENU */
+
+.burgerBtn{
+display:none;
+}
 
 @media(max-width:950px){
 
 .topbar{
-flex-direction:column;
 height:auto;
-padding:10px;
+padding:12px;
+flex-wrap:wrap;
 gap:10px;
 }
 
 .logo{
 font-size:22px;
+width:100%;
 text-align:center;
 }
 
+.burgerBtn{
+
+display:flex;
+
+width:44px;
+height:44px;
+
+border:none;
+
+border-radius:12px;
+
+background:rgba(255,255,255,.08);
+
+color:white;
+
+font-size:24px;
+
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+
+}
+
 .topNav{
+
+display:none;
+
 width:100%;
-display:grid;
-grid-template-columns:repeat(2,1fr);
+
+grid-template-columns:1fr;
+
 gap:8px;
+
+animation:fadeMenu .2s ease;
+
+}
+
+.topNav.mobileOpen{
+display:grid;
 }
 
 .navBtn{
 width:100%;
 min-width:auto;
-font-size:10px;
-padding:0 6px;
 }
 
 .steamBtn{
 width:100%;
-height:40px;
 font-size:11px;
+height:40px;
 }
 
 .hero{
-padding-top:170px;
+padding-top:220px;
 }
 
 .heroTitle{
 font-size:34px;
-padding:0 10px;
 line-height:1;
+padding:0 10px;
 }
 
 .heroText{
 font-size:13px;
-padding:0 14px;
+padding:0 12px;
 }
 
 .eventLine{
@@ -1003,19 +1007,19 @@ grid-template-columns:1fr;
 }
 
 .playerBox{
-height:230px;
+height:240px;
 }
 
 .playerBox iframe{
-height:230px;
+height:240px;
 }
 
 .chatBox{
-height:310px;
+height:320px;
 }
 
 .chatBox iframe{
-height:260px;
+height:270px;
 }
 
 .progressPanel{
@@ -1025,11 +1029,6 @@ grid-template-columns:56px 1fr;
 .minutesBlock{
 grid-column:1/-1;
 text-align:left;
-padding-left:4px;
-}
-
-.skinsTitle{
-font-size:28px;
 }
 
 .skinsGrid{
@@ -1039,16 +1038,12 @@ gap:10px;
 
 .skinImage{
 height:110px;
-padding:12px;
+padding:10px;
 }
 
 .skinName{
 font-size:13px;
-min-height:36px;
-}
-
-.lockText{
-font-size:9px;
+min-height:38px;
 }
 
 .claimBtn{
@@ -1056,19 +1051,13 @@ height:36px;
 font-size:10px;
 }
 
-.footerLogo{
-font-size:24px;
 }
-
-.footerText{
-font-size:11px;
-}
-
-}
-
-/* LANDSCAPE MOBILE */
 
 @media(max-width:950px) and (orientation:landscape){
+
+.hero{
+padding-top:120px;
+}
 
 .streamGrid{
 grid-template-columns:1fr 280px;
@@ -1098,16 +1087,22 @@ grid-template-columns:repeat(4,minmax(0,1fr));
 height:95px;
 }
 
-.hero{
-padding-top:100px;
-}
-
-.heroTitle{
-font-size:40px;
-}
-
-.topNav{
+.topNav.mobileOpen{
 grid-template-columns:repeat(4,1fr);
+}
+
+}
+
+@keyframes fadeMenu{
+
+from{
+opacity:0;
+transform:translateY(-10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
 }
 
 }
@@ -1127,7 +1122,11 @@ grid-template-columns:repeat(4,1fr);
 F1EXTOR DROPS
 </div>
 
-<div class="topNav">
+<button class="burgerBtn" onclick="toggleMobileMenu()">
+☰
+</button>
+
+<div class="topNav" id="mobileMenu">
 
 <button class="navBtn activeBtn" onclick="showTab('home',this)">
 HOME
@@ -1219,11 +1218,11 @@ OFFICIAL RUST DROPS STREAM
 
 </div>
 
-<div class="streamStatus" id="streamStatus">
+<div class="streamStatus">
 
-<div class="statusDot" id="statusDot"></div>
+<div class="statusDot"></div>
 
-<span id="statusText">CHECKING...</span>
+ONLINE
 
 </div>
 
@@ -1232,7 +1231,7 @@ OFFICIAL RUST DROPS STREAM
 <div class="playerBox">
 
 <iframe
-src="https://player.twitch.tv/?channel=f1extor&parent=f1extordrops.github.io&muted=true&autoplay=true"
+src="https://player.twitch.tv/?channel=f1extor&parent=f1extordrops.github.io"
 width="100%"
 height="500"
 frameborder="0"
@@ -1248,7 +1247,7 @@ allowfullscreen="true">
 
 <img
 id="currentDropImage"
-src="skin_1.png">
+src="skin_1.png"
 
 </div>
 
@@ -1374,13 +1373,11 @@ OFFICIAL RUST DROPS STREAM
 
 </div>
 
-<div class="streamStatus" id="dropsStreamStatus">
+<div class="streamStatus">
 
 <div class="statusDot"></div>
 
-<span id="dropsStatusText">
-CHECKING...
-</span>
+ONLINE
 
 </div>
 
@@ -1389,7 +1386,7 @@ CHECKING...
 <div class="playerBox">
 
 <iframe
-src="https://player.twitch.tv/?channel=f1extor&parent=f1extordrops.github.io&muted=true&autoplay=true"
+src="https://player.twitch.tv/?channel=f1extor&parent=f1extordrops.github.io"
 width="100%"
 height="500"
 frameborder="0"
@@ -1508,7 +1505,7 @@ style="width:76px;height:76px;border-radius:18px;border:2px solid #ff36bf;object
 <div class="skinsGrid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
 
 <div class="skinCard" style="min-height:420px;">
-<img class="skinImage" style="height:180px;padding:18px;" src="skin_1.png">
+<img class="skinImage" style="height:180px;padding:18px;" src="https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif">
 <div class="skinInfo">
 <div class="skinRarity common">COMMON</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI SAR</div>
@@ -1540,7 +1537,7 @@ EST DELIVERY: 2H
 </div>
 
 <div class="skinCard" style="min-height:420px;">
-<img class="skinImage" style="height:180px;padding:18px;" src="skin_3.png">
+<img class="skinImage" style="height:180px;padding:18px;" src="skin_4.png">
 <div class="skinInfo">
 <div class="skinRarity legendary">LEGENDARY</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI AK47</div>
@@ -1556,7 +1553,7 @@ LOCK: 6 DAYS
 </div>
 
 <div class="skinCard" style="min-height:420px;">
-<img class="skinImage" style="height:180px;padding:18px;" src="skin_4.png">
+<img class="skinImage" style="height:180px;padding:18px;" src="skin_3.png">
 <div class="skinInfo">
 <div class="skinRarity rare">RARE</div>
 <div class="skinName" style="font-size:18px;min-height:auto;">SAFARI THOMPSON</div>
@@ -1796,6 +1793,53 @@ skins
 
 }
 
+
+
+function toggleMobileMenu(){
+
+const menu =
+document.getElementById(
+'mobileMenu'
+)
+
+menu.classList.toggle(
+'mobileOpen'
+)
+
+}
+
+document.addEventListener(
+'click',
+function(e){
+
+const menu =
+document.getElementById(
+'mobileMenu'
+)
+
+const burger =
+document.querySelector(
+'.burgerBtn'
+)
+
+if(
+window.innerWidth <= 950 &&
+menu &&
+burger &&
+!menu.contains(e.target) &&
+!burger.contains(e.target)
+){
+
+menu.classList.remove(
+'mobileOpen'
+)
+
+}
+
+}
+)
+
+
 function showTab(tab,btn){
 
 const tabs = [
@@ -1842,6 +1886,23 @@ button.classList.remove(
 )
 
 })
+
+if(window.innerWidth <= 950){
+
+const mobileMenu =
+document.getElementById(
+'mobileMenu'
+)
+
+if(mobileMenu){
+
+mobileMenu.classList.remove(
+'mobileOpen'
+)
+
+}
+
+}
 
 if(btn){
 
@@ -1923,168 +1984,6 @@ btn.parentElement.classList.toggle(
 })
 
 })
-
-async function checkStreamerStatus(){
-
-const streamer = 'f1extor';
-
-try{
-
-const response =
-await fetch(
-`https://decapi.me/twitch/uptime/${streamer}`,
-{
-cache:'no-cache'
-}
-);
-
-const text =
-await response.text();
-
-const isOffline =
-text.toLowerCase().includes(
-'offline'
-);
-
-const homeStatus =
-document.getElementById(
-'streamStatus'
-);
-
-const homeText =
-document.getElementById(
-'statusText'
-);
-
-const dropsStatus =
-document.getElementById(
-'dropsStreamStatus'
-);
-
-const dropsText =
-document.getElementById(
-'dropsStatusText'
-);
-
-if(isOffline){
-
-if(homeStatus){
-
-homeStatus.classList.remove(
-'onlineStatus'
-);
-
-homeStatus.classList.add(
-'offlineStatus'
-);
-
-}
-
-if(homeText){
-
-homeText.innerHTML =
-'OFFLINE';
-
-}
-
-if(dropsStatus){
-
-dropsStatus.classList.remove(
-'onlineStatus'
-);
-
-dropsStatus.classList.add(
-'offlineStatus'
-);
-
-}
-
-if(dropsText){
-
-dropsText.innerHTML =
-'OFFLINE';
-
-}
-
-}else{
-
-if(homeStatus){
-
-homeStatus.classList.remove(
-'offlineStatus'
-);
-
-homeStatus.classList.add(
-'onlineStatus'
-);
-
-}
-
-if(homeText){
-
-homeText.innerHTML =
-'ONLINE';
-
-}
-
-if(dropsStatus){
-
-dropsStatus.classList.remove(
-'offlineStatus'
-);
-
-dropsStatus.classList.add(
-'onlineStatus'
-);
-
-}
-
-if(dropsText){
-
-dropsText.innerHTML =
-'ONLINE';
-
-}
-
-}
-
-}catch(e){
-
-console.log(e);
-
-const homeText =
-document.getElementById(
-'statusText'
-);
-
-const dropsText =
-document.getElementById(
-'dropsStatusText'
-);
-
-if(homeText){
-
-homeText.innerHTML =
-'OFFLINE';
-
-}
-
-if(dropsText){
-
-dropsText.innerHTML =
-'OFFLINE';
-
-}
-
-}
-
-}
-checkStreamerStatus();
-
-setInterval(
-checkStreamerStatus,
-60000
-);
 
 </script>
 
