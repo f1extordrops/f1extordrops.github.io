@@ -552,7 +552,7 @@ border:
 
 transition:.25s;
 
-min-height:540px;
+min-height:430px;
 }
 
 .skinCard:hover{
@@ -606,11 +606,17 @@ background:#00d26a;
 
 width:100%;
 
-height:270px;
+height:170px;
 
 object-fit:contain;
 
-padding:10px;
+padding:22px;
+
+display:block;
+
+margin:auto;
+
+image-rendering:auto;
 }
 
 .skinInfo{
@@ -941,7 +947,7 @@ FAQ
 
 <!-- HOME -->
 
-<div id="homeTab">
+<div id="homeTab" style="display:block;">
 
 <section class="hero">
 
@@ -1441,69 +1447,48 @@ OFFICIAL TWITCH DROPS PLATFORM BY F1EXTOR
 
 </footer>
 
+
 <script>
 
 const skins = [
 
 {
-name:'SAFARI SAR',
-image:'https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif',
-rarity:'COMMON',
-class:'common',
-hours:'${skin.hours}'
-},
-
-{
-name:'SAFARI THOMPSON',
-image:'https://i.imgur.com/8Km9tLL.png',
-rarity:'RARE',
-class:'rare',
-hours:'8 HOURS REQUIRED'
-},
-
-{
-name:'SAFARI MP5',
-image:'https://i.imgur.com/Fx8XG6v.png',
-rarity:'EPIC',
-class:'epic',
-hours:'8 HOURS REQUIRED'
-},
-
-{
-name:'SAFARI AK47',
-image:'https://i.imgur.com/8Km9tLL.png',
+name:'DESERT AK47',
+image:'pin_ak47_112x112.png',
 rarity:'LEGENDARY',
 class:'legendary',
-hours:'8 HOURS REQUIRED'
+hours:'8 HOURS REQUIRED',
+description:'LIMITED TWITCH DROP'
+},
+
+{
+name:'DESERT BANDANA',
+image:'157959_b.png',
+rarity:'RARE',
+class:'rare',
+hours:'8 HOURS REQUIRED',
+description:'WATCH F1EXTOR STREAM'
+},
+
+{
+name:'DESERT PANTS',
+image:'157974_b.png',
+rarity:'EPIC',
+class:'epic',
+hours:'8 HOURS REQUIRED',
+description:'LIMITED EVENT ITEM'
+},
+
+{
+name:'DESERT JACKET',
+image:'157973_b.png',
+rarity:'COMMON',
+class:'common',
+hours:'8 HOURS REQUIRED',
+description:'SAFARI COLLECTION'
 }
 
 ]
-
-/* OLD ARRAY BELOW DISABLED */
-/*
-
-{
-name:'SAFARI SAR',
-image:'https://media.tenor.com/JmEjKPAh4TUAAAAC/rust.gif',
-rarity:'COMMON',
-class:'common'
-},
-
-{
-name:'SAFARI MP5',
-image:'https://i.imgur.com/Fx8XG6v.png',
-rarity:'EPIC',
-class:'epic'
-},
-
-{
-name:'SAFARI AK47',
-image:'https://i.imgur.com/Fx8XG6v.png',
-rarity:'LEGENDARY',
-class:'legendary'
-}
-
-*/
 
 function createCard(skin){
 
@@ -1542,11 +1527,11 @@ ${skin.name}
 </div>
 
 <div class="skinHours">
-8 HOURS REQUIRED
+${skin.hours}
 </div>
 
 <div class="skinStatus">
-LOCKED
+${skin.description}
 </div>
 
 <div class="skinProgress">
@@ -1571,15 +1556,35 @@ CLAIM DROP
 
 }
 
+const featuredSkins = skins.slice(0,4)
+
+const featuredContainer =
 document.getElementById(
 'featuredDropsGrid'
-).innerHTML =
-skins.map(createCard).join('')
+)
 
+if(featuredContainer){
+
+featuredContainer.innerHTML =
+featuredSkins
+.map(createCard)
+.join('')
+
+}
+
+const dropsContainer =
 document.getElementById(
 'dropsGrid'
-).innerHTML =
-skins.map(createCard).join('')
+)
+
+if(dropsContainer){
+
+dropsContainer.innerHTML =
+skins
+.map(createCard)
+.join('')
+
+}
 
 function showTab(tab,btn){
 
@@ -1592,15 +1597,31 @@ const tabs = [
 
 tabs.forEach(name=>{
 
+const element =
 document.getElementById(
 name + 'Tab'
-).style.display = 'none'
+)
+
+if(element){
+
+element.style.display =
+'none'
+
+}
 
 })
 
+const activeTab =
 document.getElementById(
 tab + 'Tab'
-).style.display = 'block'
+)
+
+if(activeTab){
+
+activeTab.style.display =
+'block'
+
+}
 
 document
 .querySelectorAll('.navBtn')
@@ -1612,8 +1633,13 @@ button.classList.remove(
 
 })
 
+if(btn){
+
 btn.classList.add(
-'activeBtn')
+'activeBtn'
+)
+
+}
 
 }
 
@@ -1624,6 +1650,14 @@ new Date(
 
 function updateTimer(){
 
+const timer =
+document.getElementById(
+'eventTimer'
+)
+
+if(!timer)
+return
+
 const now =
 new Date()
 
@@ -1632,16 +1666,17 @@ endDate - now
 
 if(diff <= 0){
 
-document.getElementById(
-'eventTimer'
-).innerHTML =
+timer.innerHTML =
 'EVENT ENDED'
 
 return
+
 }
 
 const days =
-Math.floor(diff / 1000 / 60 / 60 / 24)
+Math.floor(
+diff / 1000 / 60 / 60 / 24
+)
 
 const hours =
 Math.floor(
@@ -1653,9 +1688,7 @@ Math.floor(
 (diff / 1000 / 60) % 60
 )
 
-document.getElementById(
-'eventTimer'
-).innerHTML =
+timer.innerHTML =
 
 days + 'D '
 + hours + 'H '
@@ -1682,6 +1715,7 @@ btn.parentElement.classList.toggle(
 })
 
 </script>
+
 
 </body>
 </html>
