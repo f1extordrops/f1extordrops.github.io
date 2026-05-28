@@ -343,7 +343,7 @@ height:8px;
 
 border-radius:50%;
 
-background:#00d26a;
+background:#ff3b3b;
 }
 
 .playerBox{
@@ -597,7 +597,7 @@ height:8px;
 
 border-radius:50%;
 
-background:#00d26a;
+background:#ff3b3b;
 }
 
 .skinImage{
@@ -2219,7 +2219,7 @@ localStorage.setItem(
 )
 
 steamButton.innerHTML =
-'STEAM CONNECTED'
+'STEAM LOGIN REQUIRED'
 
 steamButton.style.background =
 'linear-gradient(90deg,#00c853,#00e676)'
@@ -2238,7 +2238,7 @@ localStorage.getItem(
 if(connected === 'true'){
 
 steamButton.innerHTML =
-'STEAM CONNECTED'
+'STEAM LOGIN REQUIRED'
 
 steamButton.style.background =
 'linear-gradient(90deg,#00c853,#00e676)'
@@ -2249,11 +2249,9 @@ updateFakeProgress()
 
 }
 
-let currentMinutes =
-parseInt(localStorage.getItem('watchMinutes')) || 0
+let currentMinutes = 0
 
-let currentDropIndex =
-parseInt(localStorage.getItem('currentDropIndex')) || 0
+let currentDropIndex = 0
 
 let watchingStarted = false
 let watchingInterval = null
@@ -2330,7 +2328,7 @@ inventoryStatuses.forEach((status,index)=>{
 if(index === currentDropIndex){
 
 status.innerHTML =
-'IN PROGRESS'
+'LOCKED'
 
 status.style.color =
 '#00d26a'
@@ -2339,7 +2337,8 @@ status.style.color =
 
 })
 
-currentMinutes++
+// FARMING DISABLED UNTIL REAL STEAM LOGIN
+return
 
 if(currentMinutes >= 480){
 
@@ -2391,8 +2390,7 @@ document.getElementById(
 
 if(collectionText){
 
-collectionText.innerHTML =
-totalProgress + '%'
+collectionText.innerHTML = '0%'
 
 }
 
@@ -2441,28 +2439,22 @@ document.querySelectorAll(
 )
 
 if(fill1)
-fill1.style.width =
-percent + '%'
+fill1.style.width = '0%'
 
 if(fill2)
-fill2.style.width =
-percent + '%'
+fill2.style.width = '0%'
 
 if(percent1)
-percent1.innerHTML =
-percent + '%'
+percent1.innerHTML = '0%'
 
 if(percent2)
-percent2.innerHTML =
-percent + '%'
+percent2.innerHTML = '0%'
 
 if(mins1)
-mins1.innerHTML =
-minutes + ' / 480 MIN'
+mins1.innerHTML = '0 / 480 MIN'
 
 if(mins2)
-mins2.innerHTML =
-minutes + ' / 480 MIN'
+mins2.innerHTML = '0 / 480 MIN'
 
 const inventoryProgress =
 document.querySelectorAll(
@@ -2473,8 +2465,7 @@ inventoryProgress.forEach((bar,index)=>{
 
 if(index === currentDropIndex){
 
-bar.style.width =
-percent + '%'
+bar.style.width = '0%'
 
 }
 
@@ -2495,7 +2486,7 @@ bar.style.width = '0%'
 text.forEach(el=>{
 
 el.innerHTML =
-'WATCHING F1EXTOR STREAM'
+'LOGIN THROUGH STEAM TO START'
 
 })
 
@@ -2520,14 +2511,13 @@ return
 
 if(index === currentDropIndex){
 
-bar.style.width =
-percent + '%'
+bar.style.width = '0%'
 
 status.innerHTML =
 'IN PROGRESS • ' + percent + '%'
 
 button.innerHTML =
-'WATCHING'
+'LOCKED'
 
 }
 
@@ -2578,14 +2568,13 @@ return
 
 if(index === currentDropIndex){
 
-bar.style.width =
-percent + '%'
+bar.style.width = '0%'
 
 status.innerHTML =
 'IN PROGRESS • ' + percent + '%'
 
 button.innerHTML =
-'WATCHING'
+'LOCKED'
 
 }
 
@@ -2669,13 +2658,13 @@ card.style.opacity = '1'
 else if(index === currentDropIndex){
 
 status.innerHTML =
-'IN PROGRESS'
+'LOCKED'
 
 status.style.color =
 '#ff87e5'
 
 button.innerHTML =
-'WATCHING'
+'LOCKED'
 
 card.style.opacity = '1'
 
