@@ -7,7 +7,15 @@
 
 <title>F1EXTOR DROPS</title>
 
+<link rel="icon" href="favicon.ico">
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<link rel="preload" as="image" href="skin_1.png">
+<link rel="preload" as="image" href="skin_2.png">
+<link rel="preload" as="image" href="skin_3.png">
+<link rel="preload" as="image" href="skin_4.png">
+<link rel="preload" as="image" href="avatar.png">
 
 <style>
 
@@ -891,6 +899,107 @@ border:none;
 opacity:.55;
 }
 
+.tradeWarning{
+
+margin-bottom:24px;
+
+padding:18px;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+180deg,
+rgba(40,18,18,.95),
+rgba(18,10,10,.96));
+
+border:
+1px solid rgba(255,80,80,.22);
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+.tradeWarningTitle{
+
+font-size:18px;
+font-weight:900;
+
+color:#ff8f8f;
+}
+
+.tradeWarningText{
+
+margin-top:6px;
+
+font-size:12px;
+
+color:#ffd2d2;
+line-height:1.7;
+}
+
+.tradeBtn{
+
+height:42px;
+
+padding:0 18px;
+
+border:none;
+
+border-radius:12px;
+
+background:
+linear-gradient(
+90deg,
+#ff36bf,
+#9340ff);
+
+color:white;
+
+font-family:'Orbitron',sans-serif;
+
+font-size:11px;
+font-weight:900;
+
+cursor:pointer;
+}
+
+.claimBtn.farming{
+
+background:
+linear-gradient(
+90deg,
+#ff36bf,
+#9340ff);
+
+}
+
+.claimBtn.claim{
+
+background:
+linear-gradient(
+90deg,
+#00c853,
+#00e676);
+
+color:black;
+font-weight:900;
+}
+
+.claimBtn.claimed{
+
+background:
+linear-gradient(
+90deg,
+#555,
+#777);
+
+}
+
 /* FOOTER */
 
 .footer{
@@ -1244,7 +1353,50 @@ class="steamBtn"
 id="steamLogin"
 onclick="fakeSteamLogin()">
 
+<span id="steamLoginText">
 ВОЙТИ ЧЕРЕЗ STEAM
+</span>
+
+<div
+id="steamProfile"
+style="display:none;align-items:center;gap:10px;">
+
+<img
+id="steamAvatar"
+src="https://avatars.cloudflare.steamstatic.com/fc2b1f3c2b5b1e7a2f.jpg"
+style="
+width:32px;
+height:32px;
+border-radius:10px;
+border:2px solid rgba(255,255,255,.2);
+object-fit:cover;
+">
+
+<div style="text-align:left;line-height:1.1;">
+
+<div
+id="steamNickname"
+style="
+font-size:10px;
+font-weight:900;
+white-space:nowrap;
+max-width:110px;
+overflow:hidden;
+text-overflow:ellipsis;
+">
+F1EXTOR_FAN
+</div>
+
+<div style="
+font-size:8px;
+color:#b9ffd2;
+">
+STEAM CONNECTED
+</div>
+
+</div>
+
+</div>
 
 </button>
 
@@ -1579,6 +1731,33 @@ scrolling="no">
 MY <span>INVENTORY</span>
 </div>
 
+<div
+class="tradeWarning"
+id="tradeWarningBox">
+
+<div>
+
+<div class="tradeWarningTitle">
+STEAM TRADE URL REQUIRED
+</div>
+
+<div class="tradeWarningText">
+To receive Twitch Drops you must connect your Steam Trade URL.
+Without it skins cannot be delivered to your inventory.
+</div>
+
+</div>
+
+<button
+class="tradeBtn"
+onclick="addTradeLink()">
+
+ADD TRADE URL
+
+</button>
+
+</div>
+
 <div class="activityBox" style="margin-bottom:24px;">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
 
@@ -1667,11 +1846,7 @@ EST DELIVERY: 2H
 <div class="skinProgressFill"></div>
 </div>
 
-<div class="skinProgress">
 
-<div class="skinProgressFill"></div>
-
-</div>
 
 <div class="lockText" style="margin-top:12px;line-height:1.8;">
 EVENT: SAFARI COLLECTION<br>
@@ -2131,7 +2306,7 @@ btn.classList.add(
 
 const endDate =
 new Date(
-'2026-05-30T22:00:00'
+'2026-06-30T22:00:00'
 )
 
 function updateTimer(){
@@ -2218,8 +2393,21 @@ localStorage.setItem(
 'true'
 )
 
-steamButton.innerHTML =
-'STEAM LOGIN REQUIRED'
+const loginText =
+document.getElementById(
+'steamLoginText'
+)
+
+const profile =
+document.getElementById(
+'steamProfile'
+)
+
+if(loginText)
+loginText.style.display = 'none'
+
+if(profile)
+profile.style.display = 'flex'
 
 steamButton.style.background =
 'linear-gradient(90deg,#00c853,#00e676)'
@@ -2237,8 +2425,21 @@ localStorage.getItem(
 
 if(connected === 'true'){
 
-steamButton.innerHTML =
-'STEAM LOGIN REQUIRED'
+const loginText =
+document.getElementById(
+'steamLoginText'
+)
+
+const profile =
+document.getElementById(
+'steamProfile'
+)
+
+if(loginText)
+loginText.style.display = 'none'
+
+if(profile)
+profile.style.display = 'flex'
 
 steamButton.style.background =
 'linear-gradient(90deg,#00c853,#00e676)'
@@ -2252,6 +2453,18 @@ updateFakeProgress()
 let currentMinutes = 0
 
 let currentDropIndex = 0
+
+const savedDrop =
+localStorage.getItem(
+'currentDropIndex'
+)
+
+if(savedDrop){
+
+currentDropIndex =
+parseInt(savedDrop)
+
+}
 
 let watchingStarted = false
 let watchingInterval = null
@@ -2289,25 +2502,6 @@ activeTabName !== 'home' &&
 activeTabName !== 'drops'
 ){
 
-const inventoryStatuses =
-document.querySelectorAll(
-'#inventoryTab .inventoryStatus'
-)
-
-inventoryStatuses.forEach((status,index)=>{
-
-if(index === currentDropIndex){
-
-status.innerHTML =
-'⏸ PAUSED IN INVENTORY'
-
-status.style.color =
-'#ffb84d'
-
-}
-
-})
-
 return
 }
 
@@ -2318,27 +2512,11 @@ if(!playerVisible){
 return
 }
 
-const inventoryStatuses =
-document.querySelectorAll(
-'#inventoryTab .inventoryStatus'
-)
 
-inventoryStatuses.forEach((status,index)=>{
-
-if(index === currentDropIndex){
-
-status.innerHTML =
-'LOCKED'
-
-status.style.color =
-'#00d26a'
-
-}
-
-})
 
 // FARMING DISABLED UNTIL REAL STEAM LOGIN
-return
+
+currentMinutes++
 
 if(currentMinutes >= 480){
 
@@ -2390,11 +2568,12 @@ document.getElementById(
 
 if(collectionText){
 
-collectionText.innerHTML = '0%'
+collectionText.innerHTML =
+totalProgress + '%'
 
 }
 
-},5000)
+},60000)
 
 }
 
@@ -2438,23 +2617,23 @@ document.querySelectorAll(
 '#homeProgressText, #dropsProgressText'
 )
 
-if(fill1)
-fill1.style.width = '0%'
+fill1.style.width =
+percent + '%'
 
-if(fill2)
-fill2.style.width = '0%'
+fill2.style.width =
+percent + '%'
 
-if(percent1)
-percent1.innerHTML = '0%'
+percent1.innerHTML =
+percent + '%'
 
-if(percent2)
-percent2.innerHTML = '0%'
+percent2.innerHTML =
+percent + '%'
 
-if(mins1)
-mins1.innerHTML = '0 / 480 MIN'
+mins1.innerHTML =
+minutes + ' / 480 MIN'
 
-if(mins2)
-mins2.innerHTML = '0 / 480 MIN'
+mins2.innerHTML =
+minutes + ' / 480 MIN'
 
 const inventoryProgress =
 document.querySelectorAll(
@@ -2465,7 +2644,8 @@ inventoryProgress.forEach((bar,index)=>{
 
 if(index === currentDropIndex){
 
-bar.style.width = '0%'
+bar.style.width =
+percent + '%'
 
 }
 
@@ -2486,7 +2666,9 @@ bar.style.width = '0%'
 text.forEach(el=>{
 
 el.innerHTML =
-'LOGIN THROUGH STEAM TO START'
+'WATCHING F1EXTOR STREAM • ' +
+percent +
+'% COMPLETED'
 
 })
 
@@ -2511,13 +2693,27 @@ return
 
 if(index === currentDropIndex){
 
-bar.style.width = '0%'
+bar.style.width =
+percent + '%'
 
 status.innerHTML =
 'IN PROGRESS • ' + percent + '%'
 
 button.innerHTML =
-'LOCKED'
+'FARMING'
+
+button.className =
+'claimBtn farming'
+
+if(percent >= 100){
+
+button.innerHTML =
+'CLAIM'
+
+button.className =
+'claimBtn claim'
+
+}
 
 }
 
@@ -2531,6 +2727,9 @@ status.innerHTML =
 button.innerHTML =
 'CLAIMED'
 
+button.className =
+'claimBtn claimed'
+
 }
 
 else{
@@ -2541,7 +2740,10 @@ status.innerHTML =
 '🔒 LOCKED'
 
 button.innerHTML =
-'LOCKED'
+'FARMING'
+
+button.className =
+'claimBtn farming'
 
 }
 
@@ -2568,13 +2770,27 @@ return
 
 if(index === currentDropIndex){
 
-bar.style.width = '0%'
+bar.style.width =
+percent + '%'
 
 status.innerHTML =
 'IN PROGRESS • ' + percent + '%'
 
 button.innerHTML =
-'LOCKED'
+'FARMING'
+
+button.className =
+'claimBtn farming'
+
+if(percent >= 100){
+
+button.innerHTML =
+'CLAIM'
+
+button.className =
+'claimBtn claim'
+
+}
 
 }
 
@@ -2588,6 +2804,9 @@ status.innerHTML =
 button.innerHTML =
 'CLAIMED'
 
+button.className =
+'claimBtn claimed'
+
 }
 
 else{
@@ -2600,6 +2819,9 @@ status.innerHTML =
 button.innerHTML =
 'LOCKED'
 
+button.className =
+'claimBtn'
+
 }
 
 })
@@ -2607,6 +2829,9 @@ button.innerHTML =
 }
 
 function updateCurrentDrop(){
+
+const savedPercent =
+Math.floor((currentMinutes / 480) * 100)
 
 const currentSkin =
 skins[currentDropIndex]
@@ -2651,6 +2876,9 @@ status.style.color =
 button.innerHTML =
 'CLAIMED'
 
+button.className =
+'claimBtn claimed'
+
 card.style.opacity = '1'
 
 }
@@ -2658,13 +2886,26 @@ card.style.opacity = '1'
 else if(index === currentDropIndex){
 
 status.innerHTML =
-'LOCKED'
+'FARMING'
 
 status.style.color =
-'#ff87e5'
+'#00d26a'
 
 button.innerHTML =
-'LOCKED'
+'FARMING'
+
+button.className =
+'claimBtn farming'
+
+if(savedPercent >= 100){
+
+button.innerHTML =
+'CLAIM'
+
+button.className =
+'claimBtn claim'
+
+}
 
 card.style.opacity = '1'
 
@@ -2680,6 +2921,9 @@ status.style.color =
 
 button.innerHTML =
 'LOCKED'
+
+button.className =
+'claimBtn'
 
 card.style.opacity = '.45'
 
@@ -2712,7 +2956,52 @@ savedPercent,
 currentMinutes
 )
 
+function addTradeLink(){
+
+localStorage.setItem(
+'tradeURLConnected',
+'true'
+)
+
+const warning =
+document.getElementById(
+'tradeWarningBox'
+)
+
+if(warning){
+
+warning.style.display = 'none'
+
+}
+
+}
+
 checkSteamLogin()
+
+function checkTradeLink(){
+
+const tradeConnected =
+localStorage.getItem(
+'tradeURLConnected'
+)
+
+const warning =
+document.getElementById(
+'tradeWarningBox'
+)
+
+if(
+tradeConnected === 'true' &&
+warning
+){
+
+warning.style.display = 'none'
+
+}
+
+}
+
+checkTradeLink()
 
 </script>
 
